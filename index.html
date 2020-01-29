@@ -1,0 +1,154 @@
+
+<html>
+
+	<head>
+		<link rel = "stylesheet" type = "text/css" href = "interface.css" media = "screen" />
+		<title>Paper Cranes</title>
+		<link rel = "icon" href = "crane.ico">	
+	</head>
+	
+	<body>
+		<!--Main label.-->
+		<div id = "consoleDiv">
+			<p class = "consoleOld"> 
+                <span>&nbsp;.&nbsp;</span><span id = "readout5"></span><br />
+                <span>&nbsp;.&nbsp;</span><span id = "readout4"></span><br />
+                <span>&nbsp;.&nbsp;</span><span id = "readout3"></span><br />
+                <span>&nbsp;.&nbsp;</span><span id = "readout2"></span><br />
+            </p>
+            <p class = "console"> 
+                <span>&nbsp;>&nbsp;</span><span id="readout1"></span><span id = "cursor" class = "pulsate">|</span>
+            </p>
+		</div>
+		
+		<div id = "cranesDiv">
+			<h2>Paper Cranes: <span id = "cranes">0</span></h2>
+		
+			<!--Button!-->
+			<button class = "button" id = "btnMakeCrane" onClick = "makeCrane(1)">Fold Crane</button>
+			<br /><br />
+		</div>
+	
+		<div id = "column1">
+		
+			<div id = "businessDiv">
+				<b>Business</b>
+				<hr>
+				Available Funds: $ <span id = "funds">0</span><br />
+				<div id = "revPerSecDiv">
+					Avg. Rev. per sec: $ <span id = "avgRev">0</span><br />
+					Avg. Cranes Sold per sec: <span id = "avgSales">0</span><br />
+				</div>
+				Unsold Inventory: <span id = "unsoldCranes">0</span><br />
+				
+				<button class = "button" id = "btnLowerPrice" onclick = "lowerPrice()">Lower</button>
+				<button class = "button" id = "btnRaisePrice" onclick = "raisePrice()">Raise</button>
+				Price per Crane: $ <span id = "cranePrice">0.25</span><br />
+				
+				Public Demand: <span id = "demand">10</span>%<br />
+				<br />
+				
+				<button class = "button" id = "btnMarketing" onclick = "increaseMarketing()">Marketing</button>
+				Level: <span id = "marketingLevel">1</span><br />
+				Cost: $ <span id = "marketingPrice">20.00</span><br />
+				<br />
+				
+				<div id = "bankDiv">
+					<b>Bank</b>
+					<hr>
+					Debt: $ <span id = "debt">0</span><br />
+					Interest Rate: <span id = "interestRate">1</span>%<br />
+					<button class = "button" id = "btnBorrowMoney" onclick = "borrowMoney(20)">Borrow</button>
+					<button class = "button" id = "btnPayBack" onclick = "payBack()">Pay Back</button><br />
+					<br />
+				</div>
+				
+			</div>
+			
+		</div>
+		
+		<div id = "column2">
+		
+			<div id = "manufacturingDiv">
+				<b>Manufacturing</b>
+				<hr>
+				Cranes per Second: <span id = "cranemakerRate">0</span><br />
+				<br />
+				
+				<button class = "button" id = "btnBuyPaper" onclick = "buyPaper()">Paper</button>
+				<span id = "paper">5,000</span> sq. m <br />
+				Cost: $ <span id = "paperPrice">5</span><br />
+				<br />
+				
+			</div>
+		
+		</div>
+		
+		<div id = "column3">
+		
+			<div id = "workerDiv">
+				<b>Workers</b>
+				<hr>
+				<button class = "button" id = "btnHireHighSchooler" onclick = "hireHighSchooler()">Hire</button>
+				<span id = "highSchoolers">0</span> high schoolers<br />
+				Cost: $ <span id = "highSchoolerCost">0.10</span>
+				<br />
+			</div>
+		
+		</div>
+		
+		<div id = "projectsColumn">
+			<b>Projects</b><br />
+			<hr>
+			<div id = "projectsDiv">
+				<div id = "projectsDivTop">
+				</div>
+			</div>
+		</div>
+		
+		<div id = "restartDiv">
+			<button class = "button" id = "btnRestart" onclick = "restart()">Restart</button>
+		</div>
+		
+	<script type = "text/javascript" src = "projects.js"></script>
+	<script type = "text/javascript" src = "main.js"></script>
+	</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!---->
