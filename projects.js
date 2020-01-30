@@ -112,6 +112,8 @@ var project5 = {
 		project5.flag = 1;
 		displayMessage("100x more powerful than a high schooler.");
 		unsoldCranes -= 10000;
+		joUnlocked = true;
+		joDivEl.hidden = false;
 		project5.element.parentNode.removeChild(project5.element);
 		var index = activeProjects.indexOf(project5);
 		activeProjects.splice(index, 1);

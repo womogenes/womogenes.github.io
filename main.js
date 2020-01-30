@@ -13,8 +13,11 @@ var highSchoolers = 0;
 var minWage = 0.1;
 var highSchoolerBoost = 1;
 var debt = 0;
-var maxdebt = 1e3;
+var maxDebt = 1e3;
 var interestRate = 0.01;
+
+var jos = 0;
+var joCost = 100;
 
 var bankUnlocked = false;
 var joUnlocked = false;
@@ -55,6 +58,11 @@ var btnPayBackEl;
 var btnBorrowMoneyEl;
 var interestRateEl;
 
+var joDivEl;
+var btnHireJoEl;
+var josEl;
+var joCostEl;
+
 function save() {
 	var save = {
 		cranes: cranes, 
@@ -70,7 +78,11 @@ function save() {
 		minWage: minWage,
 		highSchoolerBoost: highSchoolerBoost,
 		debt: debt,
+		maxDebt: maxDebt,
 		interestRate: interestRate,
+		
+		jos: jos,
+		joCost: joCost,
 		
 		bankUnlocked: bankUnlocked,
 		joUnlocked: joUnlocked
@@ -112,7 +124,11 @@ function load() {
 		minWage = savedGame.minWage;
 		highSchoolerBoost = savedGame.highSchoolerBoost;
 		debt = savedGame.debt;
+		maxDebt = savedGame.maxDebt;
 		interestRate = savedGame.interestRate;
+		
+		jos = savedGame.jos;
+		joCost = savedGame.joCost;
 		
 		bankUnlocked = savedGame.bankUnlocked;
 		joUnlocked = savedGame.joUnlocked;
@@ -171,7 +187,10 @@ function cacheDOMElements() {
 	btnBorrowMoneyEl = document.getElementById("btnBorrowMoney");
 	interestRateEl = document.getElementById("interestRate");
 	
-	// TODO: Add Jo Nakashima to this.
+	joDivEl = document.getElementById("joDiv");
+	btnHireJoEl = document.getElementById("btnHireJo");
+	josEl = document.getElementById("jos");
+	joCostEl = document.getElementById("joCost");
 	
 	load();
 }
@@ -184,6 +203,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	btnMarketingEl.disabled = true;
 	btnHireHighSchoolerEl.disabled = true;
 	bankDivEl.hidden = !bankUnlocked;
+	joDivEl.hidden = !joUnlocked;
 	
 	paperPriceEl.innerHTML = paperPrice;
 	marketingLevelEl.innerHTML = commify(marketingLevel);
@@ -213,8 +233,9 @@ window.setInterval(function() {
 		funds += cranePrice * amount;
 	}
 	makeCrane(highSchoolers / 100);
+	makeCrane(jos);
 	
-	if (debt > maxdebt) {debt = maxdebt;}
+	if (debt > maxDebt) {debt = maxDebt;}
 	
 	btnMakeCraneEl.disabled = paper < 1;
 	btnLowerPriceEl.disabled = cranePrice <= 0.01;
@@ -222,7 +243,8 @@ window.setInterval(function() {
 	btnMarketingEl.disabled = marketingPrice > funds;
 	btnHireHighSchoolerEl.disabled = funds < minWage;
 	btnPayBackEl.disabled = funds <= 0 || debt <= 0;
-	btnBorrowMoneyEl.disabled = debt >= maxdebt;
+	btnBorrowMoneyEl.disabled = debt >= maxDebt;
+	btnHireJoEl.disabled = joCost > funds;
 	
 	cranesEl.innerHTML = commify(Math.round(cranes));
 	cranePriceEl.innerHTML = monify(cranePrice);
@@ -235,6 +257,8 @@ window.setInterval(function() {
 	paperEl.innerHTML = commify(Math.floor(paper));
 	interestRateEl.innerHTML = interestRate * 100;
 	highSchoolerWageEl.innerHTML = monify(minWage);
+	josEl.innerHTML = commify(jos);
+	joCostEl.innerHTML = monify(joCost);
 	
 	manageProjects();
 	
@@ -251,7 +275,7 @@ window.setInterval(function() {
 	paperPriceEl.innerHTML = paperPrice;
 	
 	debt = Math.ceil(debt * (1 + interestRate) * 100) / 100;
-	if (debt > maxdebt) {debt = maxdebt;}
+	if (debt > maxDebt) {debt = maxDebt;}
 	
 }, 5000);
 
@@ -289,16 +313,6 @@ var oneToTen = ["zero", "one", "two", "three", "four", "five", "six", "seven", "
 
 function spellf(userInput) {
     var numToWorkOn;
-
-    //   if (userInput === availableMatter)
-    //   {
-    //    console.log("_______");
-    //    console.log(userInput);
-    //   }
-    // create map for all unique names in numbering system
-
-
-    // To check if spell has been called as a function call :   spell(123)   window.spell(123)
 
     if (userInput < 0) {
         console.log("Error, value less than 0");
@@ -440,13 +454,13 @@ function makeCrane(n) {
 	cranesEl.innerHTML = commify(Math.floor(cranes));
 }
 
-function buyPaper() {
-	if (funds < paperPrice) {
+function buyPaper(n) {
+	if (funds < paperPrice * n) {
 		return;
 	}
 	// Buys paper! May be upgraded. 
-	paper += paperAmount;
-	funds -= paperPrice;
+	paper += Math.round(paperAmount * n);
+	funds -= Math.round(paperPrice * n);
 }
 
 function hireHighSchooler() {
@@ -454,6 +468,13 @@ function hireHighSchooler() {
 	highSchoolers++;
 	funds -= minWage;
 	minWage = Math.ceil(minWage * 1.01 * 100) / 100;
+}
+
+function hireJo() {
+	// Hires one Jo Nakashima.
+	jos++;
+	funds -= joCost;
+	joCost = Math.ceil(joCost * 1.01 * 100) / 100;
 }
 
 function lowerPrice() {
@@ -482,7 +503,7 @@ function increaseMarketing() {
 }
 
 function borrowMoney(x) {
-	if (x > maxdebt - debt) {x = maxdebt - debt;}
+	if (x > maxDebt - debt) {x = maxDebt - debt;}
 	funds += x;
 	debt += x;
 }
