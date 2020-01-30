@@ -76,7 +76,7 @@ hr {
 .projectButton {
     border-radius: 0px;
     display: block;
-    height: 65px;
+    height: 75px;
     width: 250px;
     background: #c8c8c8;
     border: 1px solid rgba(0, 0, 0, 1);
@@ -152,12 +152,6 @@ p.consoleOld {
 }
 
 #column2 {
-	float: left;
-	width: 250px;
-	margin-right: 15px;
-}
-
-#column3 {
 	float: left;
 	width: 250px;
 	margin-right: 15px;

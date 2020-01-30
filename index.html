@@ -53,7 +53,7 @@
 				Cost: $ <span id = "marketingPrice">20.00</span><br />
 				<br />
 				
-				<div id = "bankDiv">
+				<div id = "bankDiv" hidden>
 					<b>Bank</b>
 					<hr>
 					Debt: $ <span id = "debt">0</span><br />
@@ -81,18 +81,26 @@
 				<br />
 				
 			</div>
-		
-		</div>
-		
-		<div id = "column3">
-		
+			
 			<div id = "workerDiv">
 				<b>Workers</b>
 				<hr>
-				<button class = "button" id = "btnHireHighSchooler" onclick = "hireHighSchooler()">Hire</button>
-				<span id = "highSchoolers">0</span> high schoolers<br />
-				Cost: $ <span id = "highSchoolerCost">0.10</span>
+				
+				<div id = "highSchoolerDiv">
+					<button class = "button" id = "btnHireHighSchooler" onclick = "hireHighSchooler()">Hire</button>
+					<span id = "highSchoolers">0</span> high schoolers<br />
+					Cost: $ <span id = "highSchoolerCost">0.10</span>
+					<br />
+				</div>
+				
 				<br />
+				
+				<div id = "joDiv" hidden>
+					<button class = "button" id = "btnHireJo" onclick = "hireJo()">Hire</button>
+					<span id = "jos">0</span> Jo Nakashimas<br />
+					Cost: $ <span id = "joCost">100.00</span>
+					<br />
+				</div>
 			</div>
 		
 		</div>

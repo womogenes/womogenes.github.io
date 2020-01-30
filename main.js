@@ -17,6 +17,7 @@ var maxdebt = 1e3;
 var interestRate = 0.01;
 
 var bankUnlocked = false;
+var joUnlocked = false;
 
 var prevCranes = cranes;
 var tick = 0;
@@ -71,7 +72,8 @@ function save() {
 		debt: debt,
 		interestRate: interestRate,
 		
-		bankUnlocked: bankUnlocked
+		bankUnlocked: bankUnlocked,
+		joUnlocked: joUnlocked
 	}
 	
 	var savedProjectUses = [];
@@ -113,6 +115,7 @@ function load() {
 		interestRate = savedGame.interestRate;
 		
 		bankUnlocked = savedGame.bankUnlocked;
+		joUnlocked = savedGame.joUnlocked;
 		
 		var loadProjectUses = JSON.parse(localStorage.getItem("savedProjectUses"));
 		var loadProjectFlags = JSON.parse(localStorage.getItem("savedProjectFlags"));
@@ -167,6 +170,9 @@ function cacheDOMElements() {
 	btnPayBackEl = document.getElementById("btnPayBack");
 	btnBorrowMoneyEl = document.getElementById("btnBorrowMoney");
 	interestRateEl = document.getElementById("interestRate");
+	
+	// TODO: Add Jo Nakashima to this.
+	
 	load();
 }
 
@@ -218,7 +224,7 @@ window.setInterval(function() {
 	btnPayBackEl.disabled = funds <= 0 || debt <= 0;
 	btnBorrowMoneyEl.disabled = debt >= maxdebt;
 	
-	cranesEl.innerHTML = commify(Math.floor(cranes));
+	cranesEl.innerHTML = commify(Math.round(cranes));
 	cranePriceEl.innerHTML = monify(cranePrice);
 	unsoldCranesEl.innerHTML = commify(Math.floor(unsoldCranes));
 	fundsEl.innerHTML = monify(funds);
@@ -272,10 +278,14 @@ function commify(n) {
 	return n.toLocaleString('en', {useGrouping: true})
 }
 
+{
+
 var oneToTen = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"],
     elevenToNineteen = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'],
     multipleOfTen = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'],
     placeValue = ["", " thousand ", " million ", " billion ", " trillion ", " quadrillion ", " quintillion ", " sextillion ", " septillion ", " octillion ", " nonillion ", " decillion ", " undecillion ", " duodecillion ", " tredecillion ", " quattuordecillion ", " quindecillion ", " sexdecillion ", " septendecillion ", " octodecillion ", " novemdecillion  ", " vigintillion ", " unvigintillion ", " duovigintillion ", " trevigintillion ", " quattuorvigintillion ", " quinvigintillion ", " sexvigintillion ", " septenvigintillion ", " octovigintillion ", " novemvigintillion ", " trigintillion ", " untrigintillion ", " duotrigintillion ", " tretrigintillion ", " quattuortrigintillion ", " quintrigintillion ", " sextrigintillion ", " septentrigintillion ", " octotrigintillion ", " novemtrigintillion ", " quadragintillion ", " unquadragintillion ", " duoquadragintillion ", " trequadragintillion ", " quattuorquadragintillion ", " quinquadragintillion ", " sexquadragintillion ", " septenquadragintillion ", " octoquadragintillion ", " novemquadragintillion ", " quinquagintillion ", " unquinquagintillion ", " duoquinquagintillion ", " trequinquagintillion ", " quattuorquinquagintillion ", " quinquinquagintillion ", " sexquinquagintillion ", " septenquinquagintillion ", " octoquinquagintillion ", " novemquinquagintillion ", " sexagintillion ", " unsexagintillion ", " duosexagintillion ", " tresexagintillion ", " quattuorsexagintillion ", " quinsexagintillion ", " sexsexagintillion ", " septsexagintillion ", " octosexagintillion ", " octosexagintillion ", " septuagintillion ", " unseptuagintillion ", " duoseptuagintillion ", " treseptuagintillion ", " quinseptuagintillion", " sexseptuagintillion", " septseptuagintillion", " octoseptuagintillion", " novemseptuagintillion", " octogintillion", " unoctogintillion", " duooctogintillion", " treoctogintillion", " quattuoroctogintillion", " quinoctogintillion", " sexoctogintillion", " septoctogintillion", " octooctogintillion", " novemoctogintillion", " nonagintillion", " unnonagintillion", " duononagintillion", " trenonagintillion ", " quattuornonagintillion ", " quinnonagintillion ", " sexnonagintillion ", " septnonagintillion ", " octononagintillion ", " novemnonagintillion ", " centillion"];
+	
+}
 
 function spellf(userInput) {
     var numToWorkOn;
