@@ -474,7 +474,7 @@ function hireJo() {
 	// Hires one Jo Nakashima.
 	jos++;
 	funds -= joCost;
-	joCost = Math.ceil(joCost * 1.01 * 100) / 100;
+	joCost = Math.ceil(joCost * 1.05 * 100) / 100;
 }
 
 function lowerPrice() {

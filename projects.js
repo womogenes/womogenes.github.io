@@ -122,7 +122,13 @@ var project5 = {
 
 projects.push(project5);
 
-
+var project6 = {
+	id: "projectButton6",
+	title: "Paper Efficiency ",
+	priceTag: "($1,000)",
+	description: "Gain 50% more paper from each purchase.",
+	
+}
 
 
 
