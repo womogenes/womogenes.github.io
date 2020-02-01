@@ -25,8 +25,21 @@
 			<h2>Paper Cranes: <span id = "cranes">0</span></h2>
 		
 			<!--Button!-->
-			<button class = "button" id = "btnMakeCrane" onClick = "makeCrane(1)">Fold Crane</button>
-			<br /><br />
+			<button class = "button" id = "btnMakeCrane" onClick = "makeCrane(1)">Fold Crane</button><br />
+			
+			<br />
+		</div>
+		
+		<div id = "column0">
+			
+			<div id = "wishDiv">
+				<b>Wishes</b>
+				<hr>
+				Wishes: <span id = "wishes">0</span><br />
+				
+			</div>
+			
+			<br />
 		</div>
 	
 		<div id = "column1">
@@ -34,29 +47,25 @@
 			<div id = "businessDiv">
 				<b>Business</b>
 				<hr>
-				Available Funds: $ <span id = "funds">0</span><br />
-				<div id = "revPerSecDiv">
-					Avg. Rev. per sec: $ <span id = "avgRev">0</span><br />
-					Avg. Cranes Sold per sec: <span id = "avgSales">0</span><br />
-				</div>
+				Available Funds: $<span id = "funds">0</span><br />
 				Unsold Inventory: <span id = "unsoldCranes">0</span><br />
 				
 				<button class = "button" id = "btnLowerPrice" onclick = "lowerPrice()">Lower</button>
 				<button class = "button" id = "btnRaisePrice" onclick = "raisePrice()">Raise</button>
-				Price per Crane: $ <span id = "cranePrice">0.25</span><br />
+				Price per Crane: $<span id = "cranePrice">0.25</span><br />
 				
 				Public Demand: <span id = "demand">10</span>%<br />
 				<br />
 				
 				<button class = "button" id = "btnMarketing" onclick = "increaseMarketing()">Marketing</button>
 				Level: <span id = "marketingLevel">1</span><br />
-				Cost: $ <span id = "marketingPrice">20.00</span><br />
+				Cost: $<span id = "marketingPrice">20.00</span><br />
 				<br />
 				
 				<div id = "bankDiv">
 					<b>Bank</b>
 					<hr>
-					Debt: $ <span id = "debt">0</span><br />
+					Debt: $<span id = "debt">0</span><br />
 					Interest Rate: <span id = "interestRate">1</span>%<br />
 					<button class = "button" id = "btnBorrowMoney" onclick = "borrowMoney(20)">Borrow</button>
 					<button class = "button" id = "btnPayBack" onclick = "payBack()">Pay Back</button><br />
@@ -75,9 +84,14 @@
 				Cranes per Second: <span id = "cranemakerRate">0</span><br />
 				<br />
 				
+				<div id = "paperBuyerDiv">
+					<button class = "button" id = "btnPaperBuyer" onclick = "togglePaperBuyer()">PaperBuyer</button>
+					<span id = "paperBuyer">OFF</span><br />
+				</div>
+				
 				<button class = "button" id = "btnBuyPaper" onclick = "buyPaper(1)">Paper</button>
-				<span id = "paper">5,000</span> sq. m <br />
-				Cost: $ <span id = "paperPrice">5</span><br />
+				<span id = "paper">1,000</span> sq. m <br />
+				Cost: $<span id = "paperPrice">5</span><br />
 				<br />
 				
 			</div>
@@ -89,7 +103,7 @@
 				<div id = "highSchoolerDiv">
 					<button class = "button" id = "btnHireHighSchooler" onclick = "hireHighSchooler()">Hire</button>
 					<span id = "highSchoolers">0</span> high schoolers<br />
-					Cost: $ <span id = "highSchoolerCost">0.10</span>
+					Cost: $<span id = "highSchoolerCost">0.10</span>
 					<br />
 				</div>
 				
@@ -98,7 +112,7 @@
 				<div id = "joDiv">
 					<button class = "button" id = "btnHireJo" onclick = "hireJo()">Hire</button>
 					<span id = "jos">0</span> Jo Nakashimas<br />
-					Cost: $ <span id = "joCost">100.00</span>
+					Cost: $<span id = "joCost">100.00</span>
 					<br />
 				</div>
 			</div>
@@ -118,8 +132,8 @@
 			<button class = "button" id = "btnRestart" onclick = "restart()">Restart</button>
 		</div>
 		
-	<script type = "text/javascript" src = "projects.js"></script>
-	<script type = "text/javascript" src = "main.js"></script>
+		<script type = "text/javascript" src = "projects.js"></script>
+		<script type = "text/javascript" src = "main.js"></script>
 	</body>
 
 </html>

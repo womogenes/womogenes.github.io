@@ -18,9 +18,14 @@ var interestRate = 0.01;
 
 var jos = 0;
 var joCost = 100;
+var basePaperPrice = 15;
+var blinkCounter = 0;
+var paperBuyerOn = false;
 
 var bankUnlocked = false;
 var joUnlocked = false;
+var wishUnlocked = false;
+var paperBuyerUnlocked = false;
 
 var prevCranes = cranes;
 var tick = 0;
@@ -62,6 +67,10 @@ var joDivEl;
 var btnHireJoEl;
 var josEl;
 var joCostEl;
+var column0DivEl;
+var wishEl;
+var paperBuyerDivEl;
+var paperBuyerEl;
 
 function save() {
 	var save = {
@@ -83,9 +92,14 @@ function save() {
 		
 		jos: jos,
 		joCost: joCost,
+		basePaperPrice: basePaperPrice,
+		blinkCounter: blinkCounter,
+		paperBuyerOn: paperBuyerOn,
 		
 		bankUnlocked: bankUnlocked,
-		joUnlocked: joUnlocked
+		joUnlocked: joUnlocked,
+		wishUnlocked: wishUnlocked,
+		paperBuyerUnlocked: paperBuyerUnlocked
 	}
 	
 	var savedProjectUses = [];
@@ -129,9 +143,14 @@ function load() {
 		
 		jos = savedGame.jos;
 		joCost = savedGame.joCost;
+		basePaperPrice = savedGame.basePaperPrice;
+		blinkCounter = savedGame.blinkCounter;
+		paperBuyerOn = savedGame.paperBuyerOn;
 		
 		bankUnlocked = savedGame.bankUnlocked;
 		joUnlocked = savedGame.joUnlocked;
+		wishUnlocked = savedGame.wishUnlocked;
+		paperBuyerUnlocked = savedGame.paperBuyerUnlocked;
 		
 		var loadProjectUses = JSON.parse(localStorage.getItem("savedProjectUses"));
 		var loadProjectFlags = JSON.parse(localStorage.getItem("savedProjectFlags"));
@@ -191,6 +210,10 @@ function cacheDOMElements() {
 	btnHireJoEl = document.getElementById("btnHireJo");
 	josEl = document.getElementById("jos");
 	joCostEl = document.getElementById("joCost");
+	column0DivEl = document.getElementById("column0");
+	wishEl = document.getElementById("wishes");
+	paperBuyerDivEl = document.getElementById("paperBuyerDiv");
+	paperBuyerEl = document.getElementById("paperBuyer");
 	
 	load();
 }
@@ -204,9 +227,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	btnHireHighSchoolerEl.disabled = true;
 	bankDivEl.hidden = !bankUnlocked;
 	joDivEl.hidden = !joUnlocked;
+	column0DivEl.hidden = !wishUnlocked;
+	paperBuyerDivEl.hidden = !paperBuyerUnlocked;
 	
 	paperPriceEl.innerHTML = paperPrice;
 	marketingLevelEl.innerHTML = commify(marketingLevel);
+	if (paperBuyerOn) {paperBuyerEl.innerHTML = "ON";} else {paperBuyerEl.innerHTML = "OFF";}
 	
 	// Initial messages. 
 	displayMessage("You are a college student.");
@@ -215,8 +241,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 // Game loop! 
 window.setInterval(function() {
-	var demand = 0.08 / cranePrice * Math.pow(1.4, marketingLevel - 1);
+	var demand = 0.08 / cranePrice * Math.pow(1.1, marketingLevel - 1);
 	
+	// Buy paper!
+	if (paper <= 0 && paperBuyerOn) {
+		buyPaper(1);
+	}
+	
+	// Make cranes before selling them.
+	makeCrane(highSchoolers / 100);
+	makeCrane(jos);
+
 	// Sell cranes.
 	if (Math.random() * 10 < demand || cranePrice <= 0.01) {
 		var amount = Math.ceil(demand);
@@ -232,8 +267,6 @@ window.setInterval(function() {
 		unsoldCranes -= amount;
 		funds += cranePrice * amount;
 	}
-	makeCrane(highSchoolers / 100);
-	makeCrane(jos);
 	
 	if (debt > maxDebt) {debt = maxDebt;}
 	
@@ -245,13 +278,18 @@ window.setInterval(function() {
 	btnPayBackEl.disabled = funds <= 0 || debt <= 0;
 	btnBorrowMoneyEl.disabled = debt >= maxDebt;
 	btnHireJoEl.disabled = joCost > funds;
+
+	if (!wishUnlocked && cranes >= 1000) {
+		wishUnlocked = true;
+		column0DivEl.hidden = false;
+	}
 	
 	cranesEl.innerHTML = commify(Math.round(cranes));
 	cranePriceEl.innerHTML = monify(cranePrice);
 	unsoldCranesEl.innerHTML = commify(Math.floor(unsoldCranes));
 	fundsEl.innerHTML = monify(funds);
 	marketingPriceEl.innerHTML = monify(marketingPrice);
-	demandEl.innerHTML = Math.floor(demand * 100);
+	demandEl.innerHTML = commify(Math.floor(demand * 100));
 	highSchoolersEl.innerHTML = commify(highSchoolers);
 	debtEl.innerHTML = monify(debt);
 	paperEl.innerHTML = commify(Math.floor(paper));
@@ -259,6 +297,7 @@ window.setInterval(function() {
 	highSchoolerWageEl.innerHTML = monify(minWage);
 	josEl.innerHTML = commify(jos);
 	joCostEl.innerHTML = monify(joCost);
+	wishEl.innerHTML = commify(Math.floor(cranes / 1000));
 	
 	manageProjects();
 	
@@ -472,9 +511,10 @@ function hireHighSchooler() {
 
 function hireJo() {
 	// Hires one Jo Nakashima.
+	if (funds < joCost) { return; }
 	jos++;
 	funds -= joCost;
-	joCost = Math.ceil(joCost * 1.05 * 100) / 100;
+	joCost = Math.ceil(joCost * 1.1 * 100) / 100;
 }
 
 function lowerPrice() {
@@ -514,6 +554,19 @@ function payBack(x) {
 	funds -= max;
 }
 
+function togglePaperBuyer() {
+	if (paperBuyerOn) {
+		paperBuyerEl.innerHTML = "OFF";
+		paperBuyerOn = false;
+		
+	} else {
+		paperBuyerEl.innerHTML = "ON";
+		paperBuyerOn = true;
+	}
+}
+
+
+// Project management functions.
 function displayProjects(project) {
     
     project.element = document.createElement("button");
@@ -540,6 +593,8 @@ function displayProjects(project) {
 
 	var description = document.createTextNode(project.description);
 	project.element.appendChild(description);
+	
+	blink(project.element);
 }
 
 function manageProjects(){
@@ -559,4 +614,34 @@ function manageProjects(){
     }
 }
 
+function blink(element){
 
+	var handle = setInterval(function() {toggleVisibility(element)}, 30);
+    
+	function toggleVisibility(element){
+		blinkCounter++;
+		
+		if (blinkCounter >= 12) {
+			clearInterval(handle);
+			blinkCounter = 0;
+			element.style.visibility = "visible";
+			
+		} else {
+			if (element.style.visibility != "hidden"){
+				element.style.visibility = "hidden";
+				
+			} else {
+				element.style.visibility = "visible";    
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+//

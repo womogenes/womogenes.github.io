@@ -125,10 +125,47 @@ projects.push(project5);
 var project6 = {
 	id: "projectButton6",
 	title: "Paper Efficiency ",
-	priceTag: "($1,000)",
+	priceTag: "($200)",
 	description: "Gain 50% more paper from each purchase.",
-	
+	trigger: function() {return cranes >= 20000;},
+	uses: 1,
+	cost: function() {return funds >= 200;},
+	flag: 0,
+	element: null,
+	effect: function() {
+		project6.flag = 1;
+		funds -= 200;
+		paperAmount = Math.round(paperAmount * 1.5);
+		basePaperPrice = Math.round(basePaperPrice * 1.5);
+		project6.element.parentNode.removeChild(project6.element);
+		var index = activeProjects.indexOf(project6);
+		activeProjects.splice(index, 1);
+	}
 }
+
+projects.push(project6);
+
+var project7 = {
+	id: "projectButton7",
+	title: "Paper Buyer ",
+	priceTag: "(100 high schoolers)",
+	description: "Auto-purchase paper when it runs out.",
+	trigger: function() {return cranes >= 50000;},
+	uses: 1,
+	cost: function() {return highSchoolers >= 100;},
+	flag: 0,
+	element: null,
+	effect: function() {
+		project7.flag = 1
+		highSchoolers -= 100;
+		paperBuyerUnlocked = true;
+		project7.element.parentNode.removeChild(project7.element);
+		var index = activeProjects.indexOf(project7);
+		activeProjects.splice(index, 1);
+	}
+}
+
+projects.push(project7);
 
 
 
