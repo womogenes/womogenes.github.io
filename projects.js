@@ -159,6 +159,7 @@ var project7 = {
 		project7.flag = 1
 		highSchoolers -= 100;
 		paperBuyerUnlocked = true;
+		paperBuyerDivEl.hidden = false;
 		project7.element.parentNode.removeChild(project7.element);
 		var index = activeProjects.indexOf(project7);
 		activeProjects.splice(index, 1);
@@ -166,6 +167,52 @@ var project7 = {
 }
 
 projects.push(project7);
+
+var project8 = {
+	id: "projectButton8",
+	title: "Thinner Sheets ",
+	priceTag: "($400)",
+	description: "Gain 75% more paper from each purchase.",
+	trigger: function() {return project6.flag == 1;},
+	uses: 1,
+	cost: function() {return funds >= 400;},
+	flag: 0,
+	element: null,
+	effect: function() {
+		project8.flag = 1;
+		funds -= 400;
+		paperAmount = Math.round(paperAmount * 1.75);
+		basePaperPrice = Math.round(basePaperPrice * 1.5);
+		project8.element.parentNode.removeChild(project8.element);
+		var index = activeProjects.indexOf(project8);
+		activeProjects.splice(index, 1);
+	}
+}
+
+projects.push(project8);
+
+var project9 = {
+	id: "projectButton8",
+	title: "Big Paper ",
+	priceTag: "($800)",
+	description: "500% more paper from each purchase.",
+	trigger: function() {return project8.flag == 1;},
+	uses: 1,
+	cost: function() {return funds >= 800;},
+	flag: 0,
+	element: null,
+	effect: function() {
+		project9.flag = 1;
+		funds -= 800;
+		paperAmount = Math.round(paperAmount * 5);
+		basePaperPrice = Math.round(basePaperPrice * 1.5);
+		project9.element.parentNode.removeChild(project9.element);
+		var index = activeProjects.indexOf(project9);
+		activeProjects.splice(index, 1);
+	}
+}
+
+projects.push(project9);
 
 
 

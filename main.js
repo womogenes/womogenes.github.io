@@ -231,7 +231,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 // Game loop! 
 window.setInterval(function() {
-	var demand = 0.08 / cranePrice * Math.pow(1.1, marketingLevel - 1);
+	var demand = 0.08 / cranePrice * Math.pow(1.4, marketingLevel - 1);
 	
 	// Buy paper!
 	if (paper <= 0 && paperBuyerOn) {
