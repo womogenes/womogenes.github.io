@@ -8,23 +8,11 @@
 	</head>
 	
 	<body>
-		<!--Main label.-->
-		<div id = "consoleDiv">
-			<p class = "consoleOld"> 
-                <span>&nbsp;.&nbsp;</span><span id = "readout5"></span><br />
-                <span>&nbsp;.&nbsp;</span><span id = "readout4"></span><br />
-                <span>&nbsp;.&nbsp;</span><span id = "readout3"></span><br />
-                <span>&nbsp;.&nbsp;</span><span id = "readout2"></span><br />
-            </p>
-            <p class = "console"> 
-                <span>&nbsp;>&nbsp;</span><span id="readout1"></span><span id = "cursor" class = "pulsate">|</span>
-            </p>
-		</div>
 		
 		<div id = "cranesDiv">
-			<h2>Paper Cranes: <span id = "cranes">0</span></h2>
-		
-			<!--Button!-->
+			<h2>Paper Cranes: <span id = "cranes">0</span>
+			</h2>
+			
 			<button class = "button" id = "btnMakeCrane" onClick = "makeCrane(1)">Fold Crane</button><br />
 			
 			<br />
@@ -119,13 +107,22 @@
 		
 		</div>
 		
+		<div id = "consoleDiv">
+			<b>Log</b><br />
+			<hr>
+			<div id = "readoutDiv">
+			</div>
+			
+			<br />
+		</div>
+		
 		<div id = "projectsColumn">
 			<b>Projects</b><br />
 			<hr>
 			<div id = "projectsDiv">
-				<div id = "projectsDivTop">
-				</div>
 			</div>
+			
+			<br />
 		</div>
 		
 		<div id = "restartDiv">

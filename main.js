@@ -47,16 +47,11 @@ var marketingPriceEl;
 var marketingLevelEl;
 var demandEl;
 var cranemakerRateEl;
-var readout1El;
-var readout2El;
-var readout3El;
-var readout4El;
-var readout5El;
+var readoutDivEl;
 var highSchoolerWageEl;
 var paperPriceEl;
 var projectsColumnEl;
 var projectsDivEl;
-var projectsDivTopEl;
 var bankDivEl;
 var debtEl;
 var btnPayBackEl;
@@ -190,16 +185,11 @@ function cacheDOMElements() {
 	marketingLevelEl = document.getElementById("marketingLevel");
 	demandEl = document.getElementById("demand");
 	cranemakerRateEl = document.getElementById("cranemakerRate");
-	readout1El = document.getElementById("readout1");
-	readout2El = document.getElementById("readout2");
-	readout3El = document.getElementById("readout3");
-	readout4El = document.getElementById("readout4");
-	readout5El = document.getElementById("readout5");
+	readoutDivEl = document.getElementById("readoutDiv");
 	highSchoolerWageEl = document.getElementById("highSchoolerCost");
 	paperPriceEl = document.getElementById("paperPrice");
 	projectsColumnEl = document.getElementById("projectsColumn");
 	projectsDivEl = document.getElementById("projectsDiv");
-	projectsDivTopEl = document.getElementById("projectsDivTop");	
 	bankDivEl = document.getElementById("bankDiv");
 	debtEl = document.getElementById("debt");
 	btnPayBackEl = document.getElementById("btnPayBack");
@@ -324,14 +314,6 @@ window.setInterval(function() {
 	prevCranes = cranes;
 	
 }, 1000);
-
-function displayMessage(msg) {
-    readout5El.innerHTML = readout4El.innerHTML;
-    readout4El.innerHTML = readout3El.innerHTML;
-    readout3El.innerHTML = readout2El.innerHTML;
-    readout2El.innerHTML = readout1El.innerHTML;
-    readout1El.innerHTML = msg;
-}
 
 function monify(n) {
 	return n.toLocaleString('en', {useGrouping: true, minimumFractionDigits: 2, maximumFractionDigits: 2});
@@ -566,6 +548,18 @@ function togglePaperBuyer() {
 }
 
 
+// Console stuff.
+function displayMessage(msg) {
+	console.log(msg);
+	
+	var newMsgEl = document.createElement("span");
+	newMsgEl.setAttribute("class", "consoleMsg");
+	
+	readoutDivEl.appendChild(newMsgEl, readoutDivEl.lastChild);
+	readoutDivEl.appendChild(document.createElement("br"), readoutDivEl.lastChild);
+	newMsgEl.innerHTML = "- " + msg;
+}
+
 // Project management functions.
 function displayProjects(project) {
     
@@ -576,7 +570,7 @@ function displayProjects(project) {
 
 	project.element.setAttribute("class", "projectButton");
 	
-	projectsDivTopEl.appendChild(project.element, projectsDivTopEl.firstChild);
+	projectsDivEl.appendChild(project.element, projectsDivEl.firstChild);
 	
 	var span = document.createElement("span");
 	span.style.fontWeight = "bold";

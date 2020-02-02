@@ -103,22 +103,6 @@ hr {
     border: none;
 }
 
-p.console {
-    font-family: monospace;
-    font-size: 14;
-    color: white;
-    margin-top: 0;
-	padding-left: 10;
-}
-
-p.consoleOld {
-    font-family: monospace;
-    font-size: 14;
-    color: #777777;
-    margin-bottom: 0;
-	padding-left: 10;
-}
-
 .pulsate {
     -webkit-animation: pulsate 0.7s ease-out;
     -webkit-animation-iteration-count: infinite; 
@@ -138,10 +122,13 @@ p.consoleOld {
 }
 
 #consoleDiv {
-   float: left;
-   background: #000000;    
-   width: 100%;
-   margin-bottom: 15px;
+    float: right;
+    width: 250px;
+    margin-left: 15px;
+}
+
+.consoleMsg {
+	margin-bottom: 100%;
 }
 
 #column0 {
