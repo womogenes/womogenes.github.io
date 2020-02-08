@@ -225,8 +225,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	if (paperBuyerOn) {paperBuyerEl.innerHTML = "ON";} else {paperBuyerEl.innerHTML = "OFF";}
 	
 	// Initial messages. 
-	displayMessage("You are a college student.");
-	displayMessage("Legend has it you are granted one wish if you create a trillion cranes.");
+	displayMessage("One wish per thousand cranes.");
 });
 
 // Game loop! 
@@ -287,7 +286,7 @@ window.setInterval(function() {
 	highSchoolerWageEl.innerHTML = monify(minWage);
 	josEl.innerHTML = commify(jos);
 	joCostEl.innerHTML = monify(joCost);
-	wishEl.innerHTML = commify(Math.floor(cranes / 1000));
+	wishEl.innerHTML = commify(Math.floor(cranes / 1000 + 0.5));
 	
 	manageProjects();
 	
