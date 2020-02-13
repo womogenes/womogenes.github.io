@@ -20,6 +20,9 @@ var jos = 0;
 var joCost = 100;
 var basePaperPrice = 15;
 var blinkCounter = 0;
+var wishes = 0;
+var basePaperPrice = 15;
+
 var paperBuyerOn = false;
 
 var bankUnlocked = false;
@@ -66,6 +69,7 @@ var column0DivEl;
 var wishEl;
 var paperBuyerDivEl;
 var paperBuyerEl;
+var craneCountCrunchedEl;
 
 function save() {
 	var save = {
@@ -89,6 +93,9 @@ function save() {
 		joCost: joCost,
 		basePaperPrice: basePaperPrice,
 		blinkCounter: blinkCounter,
+		wishes: wishes,
+		basePaperPrice: basePaperPrice,
+		
 		paperBuyerOn: paperBuyerOn,
 		
 		bankUnlocked: bankUnlocked,
@@ -140,6 +147,9 @@ function load() {
 		joCost = savedGame.joCost;
 		basePaperPrice = savedGame.basePaperPrice;
 		blinkCounter = savedGame.blinkCounter;
+		wishes = savedGame.wishes;
+		basePaperPrice = savedGame.basePaperPrice;
+		
 		paperBuyerOn = savedGame.paperBuyerOn;
 		
 		bankUnlocked = savedGame.bankUnlocked;
@@ -204,6 +214,7 @@ function cacheDOMElements() {
 	wishEl = document.getElementById("wishes");
 	paperBuyerDivEl = document.getElementById("paperBuyerDiv");
 	paperBuyerEl = document.getElementById("paperBuyer");
+	craneCountCrunchedEl = document.getElementById("craneCountCrunched");
 	
 	load();
 }
@@ -238,11 +249,11 @@ window.setInterval(function() {
 	}
 	
 	// Make cranes before selling them.
-	makeCrane(highSchoolers / 100);
+	makeCrane(highSchoolers * highSchoolerBoost / 100);
 	makeCrane(jos);
 
 	// Sell cranes.
-	if (Math.random() * 10 < demand || cranePrice <= 0.01) {
+	if (Math.random() * 10 < demand || (cranePrice <= 0.01 && Math.random() > 0.7)) {
 		var amount = Math.ceil(demand);
 		if (cranePrice <= 0.01) {
 			amount = Math.ceil(unsoldCranes / 10);
@@ -268,7 +279,7 @@ window.setInterval(function() {
 	btnBorrowMoneyEl.disabled = debt >= maxDebt;
 	btnHireJoEl.disabled = joCost > funds;
 
-	if (!wishUnlocked && cranes >= 1000) {
+	if (!wishUnlocked && cranes > 999) {
 		wishUnlocked = true;
 		column0DivEl.hidden = false;
 	}
@@ -286,7 +297,8 @@ window.setInterval(function() {
 	highSchoolerWageEl.innerHTML = monify(minWage);
 	josEl.innerHTML = commify(jos);
 	joCostEl.innerHTML = monify(joCost);
-	wishEl.innerHTML = commify(Math.floor(cranes / 1000 + 0.5));
+	wishEl.innerHTML = commify(Math.floor(wishes));
+	craneCountCrunchedEl.innerHTML = spellf(Math.round(cranes));
 	
 	manageProjects();
 	
@@ -299,7 +311,7 @@ window.setInterval(function() {
 	save();
 	
 	// Fluctuate price. 
-	paperPrice = Math.floor(Math.sin(tick / 10) * 4) + 15;
+	paperPrice = Math.floor(Math.sin(tick / 10) * 4) + basePaperPrice;
 	paperPriceEl.innerHTML = paperPrice;
 	
 	debt = Math.ceil(debt * (1 + interestRate) * 100) / 100;
@@ -342,7 +354,6 @@ function spellf(userInput) {
     if (typeof(userInput) == "number" || typeof(userInput) == "string") {
         numToWorkOn = "" + userInput;
     }
-
 
     // To check if spell has been called using a Number/String Object:   "123".spell()   123..spell() 
     else if (typeof(this) == "object") {
@@ -399,7 +410,7 @@ function spellf(userInput) {
 
                 if (pronounce.toUpperCase() != 'zero') {
                     var num = Number(subStr + "." + stringEquivalent.substring(subStr.length, subStr.length + 2));
-                    result = formatWithCommas(num, 1) + placeValue[unitLookup] + ' , ' + result;
+                    result = commify(num, 1) + placeValue[unitLookup] + ' , ' + result;
                 }
             }
             unitLookup++;
@@ -413,10 +424,13 @@ function spellf(userInput) {
         val = parseInt(val);
         if (parseInt(val / 10) == 0) {
             return numLessThan10(val);
+			
         } else if (parseInt(val / 100) == 0) {
             return numLessThan99(val)
-        } else
+			
+        } else {
             return numLessThan1000(val);
+		}
     }
 
     // Pronounces any number less than 1000
@@ -435,8 +449,7 @@ function spellf(userInput) {
     // Pronounces any number less than 99
     function numLessThan99(val) {
         val = Number(val);
-        var tenthPlace = parseInt(val / 10),
-            result;
+        var tenthPlace = parseInt(val / 10), result;
         if (tenthPlace !== 1) {
             val % 10 ? (result = multipleOfTen[tenthPlace] + " " + numLessThan10(val % 10)) : (result = multipleOfTen[tenthPlace]);
             return result;
@@ -463,9 +476,12 @@ function restart() {
 
 // Handles.
 function makeCrane(n) {
+	
 	if (n > paper) {
 		n = paper;
 	}
+	
+	wishes += n / 1000;
 	
 	cranes += n;
 	unsoldCranes += n;
@@ -491,7 +507,7 @@ function hireHighSchooler() {
 }
 
 function hireJo() {
-	// Hires one Jo Nakashima.
+	// Hires one Jo Nakashima.	
 	if (funds < joCost) { return; }
 	jos++;
 	funds -= joCost;
@@ -517,10 +533,8 @@ function increaseMarketing() {
 	marketingLevel += 1;
 	funds -= marketingPrice
 	
-	marketingPrice *= 2;
+	marketingPrice = Math.round(marketingPrice * 1.5);
 	marketingLevelEl.innerHTML = commify(marketingLevel);
-	
-	displayMessage("Marketing upgraded to level " + marketingLevel + ".");
 }
 
 function borrowMoney(x) {
@@ -551,18 +565,21 @@ function togglePaperBuyer() {
 function displayMessage(msg) {
 	console.log(msg);
 	
-	var newMsgEl = document.createElement("span");
+	var newMsgEl = document.createElement("div");
 	newMsgEl.setAttribute("class", "consoleMsg");
+	newMsgEl.setAttribute("id", "consoleMsg");
 	
-	readoutDivEl.appendChild(newMsgEl, readoutDivEl.lastChild);
-	readoutDivEl.appendChild(document.createElement("br"), readoutDivEl.lastChild);
-	newMsgEl.innerHTML = "- " + msg;
+	readoutDivEl.prepend(document.createElement("br"), readoutDivEl.firstChild);
+	readoutDivEl.prepend(newMsgEl, readoutDivEl.firstChild);
+	
+	newMsgEl.innerHTML = msg;
 }
 
 // Project management functions.
 function displayProjects(project) {
     
     project.element = document.createElement("button");
+	project.element.style.opacity = 0;
 	project.element.setAttribute("id", project.id);
 
 	project.element.onclick = function() {project.effect()};
@@ -601,6 +618,7 @@ function manageProjects(){
     for (var i = 0; i < activeProjects.length; i++) {
         if (activeProjects[i].cost()) {
             activeProjects[i].element.disabled = false;
+			
         } else {
             activeProjects[i].element.disabled = true;
         }   
@@ -609,23 +627,17 @@ function manageProjects(){
 
 function blink(element){
 
-	var handle = setInterval(function() {toggleVisibility(element)}, 30);
+	var handle = setInterval(function() { toggleVisibility(element) }, 30);
     
 	function toggleVisibility(element){
 		blinkCounter++;
 		
-		if (blinkCounter >= 12) {
+		if (blinkCounter >= 50) {
 			clearInterval(handle);
 			blinkCounter = 0;
-			element.style.visibility = "visible";
 			
 		} else {
-			if (element.style.visibility != "hidden"){
-				element.style.visibility = "hidden";
-				
-			} else {
-				element.style.visibility = "visible";    
-			}
+			element.style.opacity = blinkCounter / 50;
 		}
 	}
 }

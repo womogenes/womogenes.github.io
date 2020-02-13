@@ -127,7 +127,7 @@ var project6 = {
 	title: "Paper Efficiency ",
 	priceTag: "($200)",
 	description: "Gain 50% more paper from each purchase.",
-	trigger: function() {return cranes >= 20000;},
+	trigger: function() {return cranes >= 5000;},
 	uses: 1,
 	cost: function() {return funds >= 200;},
 	flag: 0,
@@ -150,7 +150,7 @@ var project7 = {
 	title: "Paper Buyer ",
 	priceTag: "(100 high schoolers)",
 	description: "Auto-purchase paper when it runs out.",
-	trigger: function() {return cranes >= 50000;},
+	trigger: function() {return cranes >= 10000;},
 	uses: 1,
 	cost: function() {return highSchoolers >= 100;},
 	flag: 0,
@@ -192,10 +192,10 @@ var project8 = {
 projects.push(project8);
 
 var project9 = {
-	id: "projectButton8",
+	id: "projectButton9",
 	title: "Big Paper ",
 	priceTag: "($800)",
-	description: "500% more paper from each purchase.",
+	description: "1000% more paper from each purchase.",
 	trigger: function() {return project8.flag == 1;},
 	uses: 1,
 	cost: function() {return funds >= 800;},
@@ -204,7 +204,7 @@ var project9 = {
 	effect: function() {
 		project9.flag = 1;
 		funds -= 800;
-		paperAmount = Math.round(paperAmount * 5);
+		paperAmount = Math.round(paperAmount * 10);
 		basePaperPrice = Math.round(basePaperPrice * 1.5);
 		project9.element.parentNode.removeChild(project9.element);
 		var index = activeProjects.indexOf(project9);

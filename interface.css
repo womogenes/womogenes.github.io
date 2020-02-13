@@ -84,7 +84,7 @@ hr {
     background: #c8c8c8;
     border: 1px solid rgba(0, 0, 0, 1);
     outline: none;
-    margin-bottom: 6px;
+    margin-bottom: 10px;
 	font-family: serif;
 	font-size: 15px;
 }
@@ -109,6 +109,36 @@ hr {
     opacity: 0.0;
 }
 
+.toolTip {
+    position: relative;
+    display: inline-block;
+	margin-top: 40px;
+}
+
+.toolTip .toolTipText {
+    visibility: hidden;
+    width: 160px;
+    background-color: #c8c8c8;
+    color: #000;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 10px;
+    
+    position: absolute;
+    z-index: 1;
+    bottom: 75%;
+    left: 50%;
+    margin-left: 0px;
+    
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.toolTip:hover .toolTipText {
+    visibility: visible;
+    opacity: 1;
+}
+
 @-webkit-keyframes pulsate {
     0% { 
         opacity: 0.0;
@@ -127,8 +157,11 @@ hr {
     margin-left: 15px;
 }
 
-.consoleMsg {
-	margin-bottom: 100%;
+div#consoleMsg {
+	font-family: monospace;
+	font-size: 14px;
+	overflow: hidden;
+	margin-bottom: -10px;
 }
 
 #column0 {
