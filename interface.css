@@ -10,63 +10,65 @@ h2 {
 
 hr {
     display: block;
-    margin-top: .05em;
-    margin-bottom: 0.2em;
+    margin-top: 1px;
+    margin-bottom: 4px;
     margin-left: auto;
     margin-right: auto;
-    border-style: inset;
-    border-width: 1px;
+	border: none;
+    background-color: #000;
+    color: #000;
+    height: 1px;
 }
 
 .button {
-	margin-top: 5px;
-	margin-bottom: 5px;
-    border: 1px solid #222222;
+	font-size: 12px;
+	border-radius: 6px;
+    border: 1px solid #222;
+	outline: none;
+	
+	margin-top: 2px;
+	margin-bottom: 2px;
 }
 
 .button:hover {
-	margin-top: 5px;
-	margin-bottom: 5px;
-	background: #ffffff;
-    border: 1px solid #222222;
+	background: #fff;
+    border: 1px solid #222;
 }
 
 .button:active {
-    margin-top: 5px;
-	margin-bottom: 5px;
-	background: #dddddd;
-    border: 1px solid #222222;
+	background: #ddd;
+    border: 1px solid #222;
 }
 
 .button:disabled {
     opacity: 0.6;
-    border: 1px solid #555555;
+    border: 1px solid #555;
 }
 
 .projectButton {
-    border-radius: 0px;
+    border-radius: 20px;
     display: block;
     height: 75px;
-    width: 250px;
-    background: #c8c8c8;
-    border: 1px solid rgba(0, 0, 0, 1);
+    width: 275px;
+    border: 1px solid #000;
     outline: none;
-    margin-bottom: 10px;
-	font-family: serif;
-	font-size: 15px;
+	margin-top: 10px;
+	font-size: 12px;
 }
 
 .projectButton:hover {
-    background: #c8c8c8;
-    border: 1px solid rgba(0, 0, 0, 0.25);
+    background: #fff;
+    back: 1px solid #000;
 }
 
 .projectButton:active {
-    background: #d1d1d1;
-    border: 1px solid rgba(0, 0, 0, 1);
+    background: #ddd;
+    border: 1px solid #000;
 }
 
 .projectButton:disabled {
+	opacity: 0.6;
+	background: #ddd;
     border: none;
 }
 
@@ -79,7 +81,6 @@ hr {
 .toolTip {
     position: relative;
     display: inline-block;
-	margin-top: 40px;
 }
 
 .toolTip .toolTipText {
@@ -90,6 +91,7 @@ hr {
     text-align: center;
     padding: 5px 0;
     border-radius: 10px;
+	margin-bottom: 13px;
     
     position: absolute;
     z-index: 1;
@@ -120,7 +122,7 @@ hr {
 
 #consoleDiv {
     float: right;
-    width: 250px;
+    width: 275px;
     margin-left: 15px;
 }
 
@@ -155,6 +157,8 @@ div#consoleMsg {
 
 #restartDiv {
 	position: fixed;
-	bottom: 0;
-	padding-bottom: 10px;
+	top: 0;
+	right: 0;
+	margin-top: 5px;
+	margin-right: 10px;
 }

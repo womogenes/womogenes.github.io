@@ -7,7 +7,7 @@ var project1 = {
     id: "projectButton1",
     title: "Faster High Schoolers ",
     priceTag: "($10)",
-    description: "High Schoolers work twice as fast",
+    description: "High Schoolers work twice as fast.",
     trigger: function() {return funds >= 5 && highSchoolers > 0;},
     uses: 1,
     cost: function() {return funds >= 10;},

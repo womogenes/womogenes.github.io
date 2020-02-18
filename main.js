@@ -19,7 +19,6 @@ var interestRate = 0.01;
 var jos = 0;
 var joCost = 100;
 var basePaperPrice = 15;
-var blinkCounter = 0;
 var wishes = 0;
 var basePaperPrice = 15;
 
@@ -92,7 +91,6 @@ function save() {
 		jos: jos,
 		joCost: joCost,
 		basePaperPrice: basePaperPrice,
-		blinkCounter: blinkCounter,
 		wishes: wishes,
 		basePaperPrice: basePaperPrice,
 		
@@ -146,7 +144,6 @@ function load() {
 		jos = savedGame.jos;
 		joCost = savedGame.joCost;
 		basePaperPrice = savedGame.basePaperPrice;
-		blinkCounter = savedGame.blinkCounter;
 		wishes = savedGame.wishes;
 		basePaperPrice = savedGame.basePaperPrice;
 		
@@ -568,11 +565,11 @@ function displayMessage(msg) {
 	var newMsgEl = document.createElement("div");
 	newMsgEl.setAttribute("class", "consoleMsg");
 	newMsgEl.setAttribute("id", "consoleMsg");
+	newMsgEl.innerHTML = msg;
+	blink(newMsgEl);
 	
 	readoutDivEl.prepend(document.createElement("br"), readoutDivEl.firstChild);
 	readoutDivEl.prepend(newMsgEl, readoutDivEl.firstChild);
-	
-	newMsgEl.innerHTML = msg;
 }
 
 // Project management functions.
@@ -626,19 +623,18 @@ function manageProjects(){
 }
 
 function blink(element){
-
-	var handle = setInterval(function() { toggleVisibility(element) }, 30);
+	var blinkCounter = 0;	
+	var handle = window.setInterval(function() { toggleVisibility(element) }, 30);
     
 	function toggleVisibility(element){
-		blinkCounter++;
-		
-		if (blinkCounter >= 50) {
+		if (blinkCounter >= 10) {
 			clearInterval(handle);
-			blinkCounter = 0;
 			
 		} else {
-			element.style.opacity = blinkCounter / 50;
+			element.style.opacity = blinkCounter / 10;
 		}
+		
+		blinkCounter++;
 	}
 }
 
