@@ -101,17 +101,17 @@ projects.push(project4);
 var project5 = {
 	id: "projectButton5", 
 	title: "Professionals ", 
-	priceTag: "(10,000 cranes)", 
-	description: "Sacrifice 10,000 cranes to start hiring Jo Nakashimas, the most professional of folders.", 
+	priceTag: "(10 wishes)", 
+	description: "Use 10 wishes to start hiring Jo Nakashimas, the most professional of folders.", 
 	trigger: function() {return highSchoolers >= 100;}, 
 	uses: 1, 
-	cost: function() {return unsoldCranes >= 10000;},
+	cost: function() {return wishes >= 10;},
 	flag: 0,
 	element: null,
 	effect: function() {
 		project5.flag = 1;
 		displayMessage("100x more powerful than a high schooler.");
-		unsoldCranes -= 10000;
+		wishes -= 10;
 		joUnlocked = true;
 		joDivEl.hidden = false;
 		project5.element.parentNode.removeChild(project5.element);

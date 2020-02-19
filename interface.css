@@ -22,21 +22,22 @@ hr {
 
 .button {
 	font-size: 12px;
-	border-radius: 6px;
+	border-radius: 5px;
     border: 1px solid #222;
 	outline: none;
+	background: #eee;
 	
 	margin-top: 2px;
 	margin-bottom: 2px;
 }
 
 .button:hover {
-	background: #fff;
+	background: #f9f9f9;
     border: 1px solid #222;
 }
 
 .button:active {
-	background: #ddd;
+	background: #ccc;
     border: 1px solid #222;
 }
 
