@@ -1,5 +1,7 @@
-# womogenes
+Welcome to my site! Currently, there is only one thing here.
 
-My site! Currently hosts my game (Paper Cranes), which was inspired by Universal Paperclips.
+1. [Paper Cranes](https://womogenes.github.io/papercranes/index.html) (Inspired by [Universal Paperclips](https://decisionproblem.com/paperclips/index2.html))
 
-Still under construction.
+I'll be adding a few more things soon, hopefully in March of 2020.
+
+Thanks for visiting!
