@@ -568,7 +568,6 @@ function displayMessage(msg) {
 	newMsgEl.innerHTML = msg;
 	blink(newMsgEl);
 	
-	readoutDivEl.prepend(document.createElement("br"), readoutDivEl.firstChild);
 	readoutDivEl.prepend(newMsgEl, readoutDivEl.firstChild);
 }
 
