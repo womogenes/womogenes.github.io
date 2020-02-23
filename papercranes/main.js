@@ -528,9 +528,9 @@ function increaseMarketing() {
 		return;
 	}
 	marketingLevel += 1;
-	funds -= marketingPrice
+	funds -= marketingPrice;
 	
-	marketingPrice = Math.round(marketingPrice * 1.5);
+	marketingPrice = Math.round(marketingPrice * 2);
 	marketingLevelEl.innerHTML = commify(marketingLevel);
 }
 
