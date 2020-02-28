@@ -8,14 +8,23 @@
 	</head>
 	
 	<body>
+	
+		<div id = "consoleDiv">
+			<b>Log</b><br />
+			<hr>
+			<div id = "readoutDiv" class = "scroll">
+			</div>
+			
+			<br />
+		</div>
 		
 		<div id = "fundsDiv">
 		
-			<h2>Money: $<span id = "funds">0</span></h2>
+			<h2>Money: $<span id = "funds">0.00</span></h2>
 			
 		</div>
 		
-		<div id = "column0">
+		<div id = "column0" hidden>
 			
 			<div id = "wishDiv">
 				<b>Prestige</b>
@@ -41,19 +50,20 @@
 				<hr>
 				Unsold Inventory: <span id = "unsoldCranes">0</span><br />
 				
+				Price per Crane: $<span id = "cranePrice">0.25</span><br />
 				<button class = "button" id = "btnLowerPrice" onclick = "lowerPrice()">Lower</button>
 				<button class = "button" id = "btnRaisePrice" onclick = "raisePrice()">Raise</button>
-				Price per Crane: $<span id = "cranePrice">0.25</span><br />
+				<br />
 				
 				Public Demand: <span id = "demand">10</span>%<br />
 				<br />
 				
 				<button class = "button" id = "btnMarketing" onclick = "increaseMarketing()">Marketing</button>
 				Level: <span id = "marketingLevel">1</span><br />
-				Cost: $<span id = "marketingPrice">20.00</span><br />
+				Cost: $<span id = "marketingPrice">40.00</span><br />
 				<br />
 				
-				<div id = "bankDiv">
+				<div id = "bankDiv" hidden>
 					<b>Bank</b>
 					<hr>
 					Debt: $<span id = "debt">0</span><br />
@@ -81,7 +91,7 @@
 				
 				<br />
 				
-				<div id = "paperBuyerDiv">
+				<div id = "paperBuyerDiv" hidden>
 					<button class = "button" id = "btnPaperBuyer" onclick = "togglePaperBuyer()">PaperBuyer</button>
 					<span id = "paperBuyer">OFF</span><br />
 				</div>
@@ -100,13 +110,13 @@
 				<div id = "highSchoolerDiv">
 					<button class = "button" id = "btnHireHighSchooler" onclick = "hireHighSchooler()">Hire</button>
 					<span id = "highSchoolers">0</span> high schoolers<br />
-					Cost: $<span id = "highSchoolerCost">0.10</span>
+					Cost: $<span id = "highSchoolerCost">5.00</span>
 					<br />
 				</div>
 				
 				<br />
 				
-				<div id = "joDiv">
+				<div id = "joDiv" hidden>
 					<button class = "button" id = "btnHireJo" onclick = "hireJo()">Hire</button>
 					<span id = "jos">0</span> Jo Nakashimas<br />
 					Cost: $<span id = "joCost">100.00</span>
@@ -116,15 +126,6 @@
 				<br />
 			</div>
 		
-		</div>
-		
-		<div id = "consoleDiv">
-			<b>Log</b><br />
-			<hr>
-			<div id = "readoutDiv" class = "scroll">
-			</div>
-			
-			<br />
 		</div>
 		
 		<div id = "projectsColumn">

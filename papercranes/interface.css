@@ -4,6 +4,10 @@
 	font-family: monospace;
 }
 
+h1 {
+	margin-bottom: 15px;
+}
+
 h2 {
 	margin-bottom: 15px;
 }
@@ -22,7 +26,6 @@ hr {
 
 div.scroll {
 	overflow: auto;
-	text-align: justify;
 	border: 1px solid #000;
 }
 
@@ -53,30 +56,31 @@ div.scroll {
 }
 
 .projectButton {
-    border-radius: 20px;
-    display: block;
-    height: 75px;
-    width: 275px;
+	font-size: 12px;
+    border-radius: 10px;
     border: 1px solid #000;
     outline: none;
+	background: #eee;
+	display: block;
+    
+    height: 100px;
+    width: 200px;
 	margin-top: 10px;
-	font-size: 12px;
 }
 
 .projectButton:hover {
-    background: #fff;
-    back: 1px solid #000;
+    background: #f9f9f9;
+	border: 1px solid #222;
 }
 
 .projectButton:active {
-    background: #ddd;
-    border: 1px solid #000;
+    background: #ccc;
+	border: 1px solid #222;
 }
 
 .projectButton:disabled {
 	opacity: 0.6;
-	background: #ddd;
-    border: none;
+	border: 1px solid #555;
 }
 
 .pulsate {
@@ -116,10 +120,10 @@ div.scroll {
 }
 
 #consoleDiv {
-    float: right;
-    width: 275px;
-	height: 50%;
-    margin-left: 15px;
+    float: up;
+    width: 100%;
+	height: 100px;
+	margin-top: 30px;
 }
 
 div#consoleMsg {
@@ -128,31 +132,32 @@ div#consoleMsg {
 }
 
 div#readoutDiv {
-	height: 70%;
+	height: 65%;
+	margin-top: 10px;
 	padding: 5px;
 }
 
 #column0 {
 	float: left;
-	width: 275px;
+	width: 200px;
 	margin-right: 15px;
 }
 
 #column1 {
    float: left;
-	width: 275px;
+	width: 200px;
    margin-right: 15px;
 }
 
 #column2 {
 	float: left;
-	width: 275px;
+	width: 200px;
 	margin-right: 15px;
 }
 
 #projectsColumn {
 	float: right;
-	width: 275px;
+	width: 200px;
 }
 
 #restartDiv {

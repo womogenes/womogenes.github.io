@@ -4,13 +4,13 @@ var cranes = 0;
 var unsoldCranes = 0;
 var funds = 0;
 var cranePrice = 0.25;
-var marketingPrice = 20.00;
+var marketingPrice = 40.00;
 var paperPrice = 20;
 var paperAmount = 1000;
 var paper = paperAmount;
 var marketingLevel = 1;
 var highSchoolers = 0;
-var minWage = 0.1;
+var minWage = 5;
 var highSchoolerBoost = 1;
 var debt = 0;
 var maxDebt = 1e3;
@@ -233,12 +233,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	if (paperBuyerOn) {paperBuyerEl.innerHTML = "ON";} else {paperBuyerEl.innerHTML = "OFF";}
 	
 	// Initial messages. 
-	displayMessage("One wish per thousand cranes.");
+	displayMessage("Click \"Fold Crane\" to start making cranes.");
 });
 
 // Game loop! 
 window.setInterval(function() {
-	var demand = 0.08 / cranePrice * Math.pow(1.4, marketingLevel - 1);
+	var demand = 0.08 / cranePrice * Math.pow(1.1, marketingLevel - 1);
 	
 	// Buy paper!
 	if (paper <= 0 && paperBuyerOn) {
@@ -279,6 +279,7 @@ window.setInterval(function() {
 	if (!wishUnlocked && cranes > 999) {
 		wishUnlocked = true;
 		column0DivEl.hidden = false;
+		blink(column0DivEl);
 	}
 	
 	cranesEl.innerHTML = commify(Math.round(cranes));
@@ -622,7 +623,9 @@ function manageProjects(){
 }
 
 function blink(element){
-	var blinkCounter = 0;	
+	var blinkCounter = -5;
+	toggleVisibility(element);
+	
 	var handle = window.setInterval(function() { toggleVisibility(element) }, 30);
     
 	function toggleVisibility(element){

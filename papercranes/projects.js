@@ -7,7 +7,7 @@ var project1 = {
     id: "projectButton1",
     title: "Faster High Schoolers ",
     priceTag: "($10)",
-    description: "High Schoolers work twice as fast.",
+    description: "High Schoolers work 25% faster.",
     trigger: function() {return funds >= 5 && highSchoolers > 0;},
     uses: 1,
     cost: function() {return funds >= 10;},
@@ -15,8 +15,8 @@ var project1 = {
     element: null,
     effect: function() {
         project1.flag = 1;
-        displayMessage("High schoolers now work twice as fast.");
-        highSchoolerBoost *= 2;
+        displayMessage("High schoolers now work 25% as fast.");
+        highSchoolerBoost *= 1.25;
 		project1.element.parentNode.removeChild(project1.element);
 		funds -= 10;
         var index = activeProjects.indexOf(project1);
@@ -54,7 +54,7 @@ var project3 = {
 	id: "projectButton3", 
 	title: "Even Faster High Schoolers ", 
 	priceTag: "($20)", 
-	description: "Double interest rate, and high schoolers are twice as fast.", 
+	description: "Double interest rate, and high schoolers are 50% faster.", 
 	trigger: function() {return funds >= 10 && project1.flag;}, 
 	uses: 1, 
 	cost: function() {return funds >= 20;},
