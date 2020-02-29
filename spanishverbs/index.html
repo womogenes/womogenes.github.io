@@ -2,6 +2,7 @@
 <html>
 
 	<head>
+		<meta charset = "utf-8">
 		<link rel = "stylesheet" type = "text/css" href = "interface.css" media = "screen" />
 		<title>Spanish Verb Conjugator</title>
 		<!-- link rel = "icon" href = "crane.ico" -->	
@@ -10,8 +11,48 @@
 	<body>
 	
 		<h1>Spanish Verb Conjugator</h2>
+		
+		<p>Currently, this can only conjugate verbs in the present and pretierite tenses.<br />
+		More tenses to come on March 2020!</p>
+		
+		<input type = "text" id = "verbInput" placeholder = "Verb"><br />
+		<input type = "text" id = "tenseInput" placeholder = "Tense"><br />
+		
+		<button class = "button" onclick = "conjugateVerb()">Conjugate</button><br /><br />
+		
+		<table>
+			<tr>
+				<th>Subject</th>
+				<th>Conjugation</th>
+			</tr>
+			<tr>
+				<td>yo</td>
+				<td id = "yo"></td>
+			</tr>
+			<tr>
+				<td>tú</td>
+				<td id = "tú"></td>
+			</tr>
+			<tr>
+				<td>él/ella/usted</td>
+				<td id = "usted"></td>
+			</tr>
+			<tr>
+				<td>nosotros/as</td>
+				<td id = "nos"></td>
+			</tr>
+			<tr>
+				<td>vosotros/as</td>
+				<td id = "vos"></td>
+			</tr>
+			<tr>
+				<td>ellos/ellas/ustedes</td>
+				<td id = "ustedes"></td>
+			</tr>
+		</table>
 	
 		<script type = "text/javascript" src = "functions.js"></script>
+		<script type = "text/javascript" src = "main.js"></script>
 	</body>
 
 </html>

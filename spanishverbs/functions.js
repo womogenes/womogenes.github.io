@@ -247,7 +247,8 @@ var conj = function(verb, sub, tense) {
         var ser_ir = ["fui", "fuiste", "fue", "fuimos", "fuisteis", "fueron"];
         var hacer = ["hice", "hiciste", "hizo", "hicimos", "hicisteis", "hicieron"];
 		
-        var stem = ""
+        var stem = "";
+		var word;
 		
 		if (any(verb) != false) {
 			stem = any(verb);
@@ -280,6 +281,76 @@ var conj = function(verb, sub, tense) {
 			verb = stem + "puder";
 			otherIrreg.push(verb);
 		}
+		if (verb.includes("caber")) {
+			verb = stem + "cuper";
+			otherIrreg.push(verb);
+		}
+		if (verb.includes("traer")) {
+			verb = stem + "trajir";
+			otherIrreg.push(verb);
+		}
+		if (verb.includes("andar")) {
+			verb = stem + "anduvar";
+			otherIrreg.push(verb);
+		}
+		if (verb.includes("decir")) {
+			verb = stem + "dijir";
+			otherIrreg.push(verb);
+		}
+		if (verb.includes("haber")) {
+			verb = stem + "huber";
+			otherIrreg.push(verb);
+		}
+		
+		if (verb == "ser" || verb == "ir") { return ser_ir[sub]; }
+		if (verb == "dar" || verb == "ver") { return verb[0] + dar_ver[sub]; }
+		if (verb == "hacer") { return hacer[sub]; }
+		
+		if (verb.endsWith("ucir")) { verb = verb.substring(0, verb.length - 4) + "ujir"; }
+		if (otherIrreg.includes(verb) || verb.endsWith("ujir")) {
+			if (verb.endsWith("jir") || sub == 5) {
+				verb = verb.substring(0, verb.length - 2) + "eron";
+			} else {
+				verb = verb.substring(0, verb.length - 2) + oiEnding[sub];
+			}
+			return verb;
+		}
+		if ((verb == "leer" || verb == "creer" || verb == "caer" || verb == "oir") || (verb[verb.length - 3].match(/[aeiou]/) && verb.substring(verb.length - 2, verb.length).match(/[ie]r/))) {
+			return verb.substring(0, verb.length - 2) + vowelErIr[sub];
+		}
+		if (sub == 2 || sub == 5) { verb = stemChange(verb, tense); }
+		
+		if (sub == 0) {
+			if (verb.endsWith("car")) {
+				word = verb.substring(0, verb.length - 3) + "qué";
+				return word;
+			}
+			if (verb.endsWith("gar")) {
+				word = verb.substring(0, verb.length - 3) + "gué";
+				return word;
+			}
+			if (verb.endsWith("zar")) {
+				word = verb.substring(0, verb.length - 3) + "cé";
+				return word;
+			}
+		}
+		if (verb.endsWith("ar")) {
+			word = verb.substring(0, verb.length - 2) + ar[sub];
+			
+		} else if (verb.substring(verb.length - 2, verb.length).match(/[ei]r/)) {
+			word = verb.substring(0, verb.length - 2) + er[sub];
+		}
+		return word;
+	}
+	if (tense == "imperfect") {
+		var ar = ["aba","abas","aba","ábamos","abais","aban"]
+        var eir = ["ía","ías","ía","íamos","íais","ían"]
+        var irreg = ["ser","ir","ver"]
+        var ser = ["era","eras","era","éramos","erais","eran"]
+        var ir = ["iba","ibas","iba","íbamos","ibais","iban"]
+        var ver = ["veía","veías","veía","veíamos","veíais","veían"]
+		
+		
 	}
 }
 

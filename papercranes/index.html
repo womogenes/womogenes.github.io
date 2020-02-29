@@ -2,38 +2,38 @@
 <html>
 
 	<head>
-		<link rel = "stylesheet" type = "text/css" href = "interface.css" media = "screen" />
+		<link rel="stylesheet" type="text/css" href="interface.css" media="screen" />
 		<title>Paper Cranes</title>
-		<link rel = "icon" href = "crane.ico">	
+		<link rel="icon" href="crane.ico">	
 	</head>
 	
 	<body>
 	
-		<div id = "consoleDiv">
-			<div id = "readoutDiv" class = "scroll">
+		<div id="consoleDiv">
+			<div id="readoutDiv" class="scroll">
 			</div>
 			<br />
 		</div>
 		
-		<div id = "fundsDiv">
+		<div id="fundsDiv">
 			
-			Happiness: <span id = "happinessMeter">$</span>
-			<h2>Money: $<span id = "funds">0.00</span></h2>
+			Happiness: <span id="happinessMeter">$</span>
+			<h2>Money: $<span id="funds">0.00</span></h2>
 			
 		</div>
 		
-		<div id = "column0" hidden>
+		<div id="column0" hidden>
 			
-			<div id = "wishDiv">
+			<div id="wishDiv">
 				<b>Prestige</b>
 				<hr>
 				
-				<div class = "toolTip">
-					<span id = "craneCountCrunched" class = "toolTipText">0</span>
-					Lifetime cranes: <span id = "cranes">0</span>
+				<div class="toolTip">
+					<span id="craneCountCrunched" class="toolTipText">0</span>
+					Lifetime cranes: <span id="cranes">0</span>
 				</div>
 				<br />
-				Wishes: <span id = "wishes">0</span><br />
+				Wishes: <span id="wishes">0</span><br />
 				
 				<br />
 			</div>
@@ -41,33 +41,33 @@
 			<br />
 		</div>
 	
-		<div id = "column1">
+		<div id="column1">
 		
-			<div id = "businessDiv">
+			<div id="businessDiv">
 				<b>Business</b>
 				<hr>
-				Unsold Inventory: <span id = "unsoldCranes">0</span><br />
+				Unsold Inventory: <span id="unsoldCranes">0</span><br />
 				
-				<button class = "button" id = "btnLowerPrice" onclick = "lowerPrice()">Lower</button>
-				<button class = "button" id = "btnRaisePrice" onclick = "raisePrice()">Raise</button>
-				Crane price: $<span id = "cranePrice">0.25</span>
+				<button class="button" id="btnLowerPrice" onclick="lowerPrice()">Lower</button>
+				<button class="button" id="btnRaisePrice" onclick="raisePrice()">Raise</button>
+				Crane price: $<span id="cranePrice">0.25</span>
 				<br />
 				
-				Public Demand: <span id = "demand">10</span>%<br />
+				Public Demand: <span id="demand">10</span>%<br />
 				<br />
 				
-				<button class = "button" id = "btnMarketing" onclick = "increaseMarketing()">Marketing</button>
-				Level: <span id = "marketingLevel">1</span><br />
-				Cost: $<span id = "marketingPrice">40.00</span><br />
+				<button class="button" id="btnMarketing" onclick="increaseMarketing()">Marketing</button>
+				Level: <span id="marketingLevel">1</span><br />
+				Cost: $<span id="marketingPrice">40.00</span><br />
 				<br />
 				
-				<div id = "bankDiv" hidden>
+				<div id="bankDiv" hidden>
 					<b>Bank</b>
 					<hr>
-					Debt: $<span id = "debt">0</span><br />
-					Interest Rate: <span id = "interestRate">1</span>%<br />
-					<button class = "button" id = "btnBorrowMoney" onclick = "borrowMoney(20)">Borrow</button>
-					<button class = "button" id = "btnPayBack" onclick = "payBack()">Pay Back</button><br />
+					Debt: $<span id="debt">0</span><br />
+					Interest Rate: <span id="interestRate">1</span>%<br />
+					<button class="button" id="btnBorrowMoney" onclick="borrowMoney(20)">Borrow</button>
+					<button class="button" id="btnPayBack" onclick="payBack()">Pay Back</button><br />
 					<br />
 				</div>
 				
@@ -75,49 +75,49 @@
 			
 		</div>
 		
-		<div id = "column2">
+		<div id="column2">
 		
-			<div id = "manufacturingDiv">
+			<div id="manufacturingDiv">
 				<b>Manufacturing</b>
 				<hr>
 				
-				<button class = "button" id = "btnMakeCrane" onClick = "makeCrane(1)">Fold Crane</button>
+				<button class="button" id="btnMakeCrane" onClick="makeCrane(1)">Fold Crane</button>
 				<br />
 				
-				Cranes per Second: <span id = "cranemakerRate">0</span>
+				Cranes per Second: <span id="cranemakerRate">0</span>
 				<br />
 				
 				<br />
 				
-				<div id = "paperBuyerDiv" hidden>
-					<button class = "button" id = "btnPaperBuyer" onclick = "togglePaperBuyer()">PaperBuyer</button>
-					<span id = "paperBuyer">OFF</span><br />
+				<div id="paperBuyerDiv" hidden>
+					<button class="button" id="btnPaperBuyer" onclick="togglePaperBuyer()">PaperBuyer</button>
+					<span id="paperBuyer">OFF</span><br />
 				</div>
 				
-				<button class = "button" id = "btnBuyPaper" onclick = "buyPaper(1)">Paper</button>
-				<span id = "paper">1,000</span> sq. m <br />
-				Cost: $<span id = "paperPrice">5</span><br />
+				<button class="button" id="btnBuyPaper" onclick="buyPaper(1)">Paper</button>
+				<span id="paper">1,000</span> sq. m <br />
+				Cost: $<span id="paperPrice">5</span><br />
 				<br />
 				
 			</div>
 			
-			<div id = "workerDiv">
+			<div id="workerDiv">
 				<b>Workers</b>
 				<hr>
 				
-				<div id = "highSchoolerDiv">
-					<button class = "button" id = "btnHireHighSchooler" onclick = "hireHighSchooler()">Hire</button>
-					<span id = "highSchoolers">0</span> high schoolers<br />
-					Cost: $<span id = "highSchoolerCost">5.00</span>
+				<div id="highSchoolerDiv">
+					<button class="button" id="btnHireHighSchooler" onclick="hireHighSchooler()">Hire</button>
+					<span id="highSchoolers">0</span> high schoolers<br />
+					Cost: $<span id="highSchoolerCost">5.00</span>
 					<br />
 				</div>
 				
 				<br />
 				
-				<div id = "joDiv" hidden>
-					<button class = "button" id = "btnHireJo" onclick = "hireJo()">Hire</button>
-					<span id = "jos">0</span> Jo Nakashimas<br />
-					Cost: $<span id = "joCost">100.00</span>
+				<div id="joDiv" hidden>
+					<button class="button" id="btnHireJo" onclick="hireJo()">Hire</button>
+					<span id="jos">0</span> Jo Nakashimas<br />
+					Cost: $<span id="joCost">100.00</span>
 					<br />
 				</div>
 				
@@ -126,22 +126,22 @@
 		
 		</div>
 		
-		<div id = "projectsColumn">
+		<div id="projectsColumn">
 			<b>Projects</b><br />
 			<hr>
-			<div id = "projectsDiv">
+			<div id="projectsDiv">
 			</div>
 			
 			<br />
 		</div>
 		
-		<div id = "menuDiv">
-			<button class = "button" id = "btnSave" onclick = "save()">Save</button>
-			<button class = "button" id = "btnRestart" onclick = "restart()">Restart</button>
+		<div id="menuDiv">
+			<button class="button" id="btnSave" onclick="save()">Save</button>
+			<button class="button" id="btnRestart" onclick="restart()">Restart</button>
 		</div>
 		
-		<script type = "text/javascript" src = "projects.js"></script>
-		<script type = "text/javascript" src = "main.js"></script>
+		<script type="text/javascript" src="projects.js"></script>
+		<script type="text/javascript" src="main.js"></script>
 	</body>
 
 </html>
