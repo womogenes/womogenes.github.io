@@ -25,14 +25,24 @@ function cacheDOMElements() {
 	ustedesEl = document.getElementById("ustedes");
 }
 
-document.addEventListener("DOMContentLoaded", function(event) {	
+$(function(event) {	
 	cacheDOMElements();
+});
+
+$(document).keypress(function(e) {
+	if (e.which == 13) {
+		conjugateVerb();
+	}
 });
 
 function conjugateVerb() {
 	
 	var verb = verbInputEl.value;
 	var tense = tenseInputEl.value;
+	
+	if (conj(verb, 0, tense) == null) {
+		return;
+	}
 	
 	yoEl.innerHTML = conj(verb, 0, tense);
 	túEl.innerHTML = conj(verb, 1, tense);

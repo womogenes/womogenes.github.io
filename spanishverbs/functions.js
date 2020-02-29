@@ -184,6 +184,9 @@ var stemChange = function(verb, tense) {
 
 var conj = function(verb, sub, tense) {
 	
+	verb = verb.toLowerCase();
+	tense = tense.toLowerCase();
+	
 	if (tense == "present") {
 		var ar = ["o", "as", "a", "amos", "áis", "an"];
         var er = ["o", "es", "e", "emos", "éis", "en"];

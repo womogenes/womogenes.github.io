@@ -10,47 +10,91 @@
 	
 	<body>
 	
-		<h1>Spanish Verb Conjugator</h2>
+		<div id = "titleDiv">
+			<h1>Spanish Verb Conjugator</h2>
+			<hr>
+		</div>
+		<br />
 		
-		<p>Currently, this can only conjugate verbs in the present and pretierite tenses.<br />
-		More tenses to come on March 2020!</p>
+		<div id = "conjDiv">
 		
-		<input type = "text" id = "verbInput" placeholder = "Verb"><br />
-		<input type = "text" id = "tenseInput" placeholder = "Tense"><br />
-		
-		<button class = "button" onclick = "conjugateVerb()">Conjugate</button><br /><br />
-		
-		<table>
-			<tr>
-				<th>Subject</th>
-				<th>Conjugation</th>
-			</tr>
-			<tr>
-				<td>yo</td>
-				<td id = "yo"></td>
-			</tr>
-			<tr>
-				<td>tú</td>
-				<td id = "tú"></td>
-			</tr>
-			<tr>
-				<td>él/ella/usted</td>
-				<td id = "usted"></td>
-			</tr>
-			<tr>
-				<td>nosotros/as</td>
-				<td id = "nos"></td>
-			</tr>
-			<tr>
-				<td>vosotros/as</td>
-				<td id = "vos"></td>
-			</tr>
-			<tr>
-				<td>ellos/ellas/ustedes</td>
-				<td id = "ustedes"></td>
-			</tr>
-		</table>
+			<table class = "input">
+			
+				<tr class = "input">
+					<th class = "input">Verb</th>
+					<th class = "input"><input type = "text" id = "verbInput" spellcheck="false" /><br /></th>
+				</tr>
+				
+				<tr class = "input">
+					<th class = "input">Tense</th>
+					<th class = "input"><input type = "text" id = "tenseInput" spellcheck="false" /></th>
+				</tr>
+			
+			</table>
+			<br />
+			
+			<button class = "button" onclick = "conjugateVerb()">Conjugate</button><br /><br />
+			
+			<table id = "results">
+				<tr>
+					<th>Subject</th>
+					<th>Conjugation</th>
+				</tr>
+				<tr>
+					<td>yo</td>
+					<td id = "yo"></td>
+				</tr>
+				<tr>
+					<td>tú</td>
+					<td id = "tú"></td>
+				</tr>
+				<tr>
+					<td>él/ella/usted</td>
+					<td id = "usted"></td>
+				</tr>
+				<tr>
+					<td>nosotros/as</td>
+					<td id = "nos"></td>
+				</tr>
+				<tr>
+					<td>vosotros/as</td>
+					<td id = "vos"></td>
+				</tr>
+				<tr>
+					<td>ellos/ellas/ustedes</td>
+					<td id = "ustedes"></td>
+				</tr>
+			</table>
+			<br />
 	
+		</div>
+		<br />
+	
+		<div id = "aboutDiv">
+			<h2>About</h2>
+			<hr>
+			
+			<p>
+			This is a tool that conjugates Spanish verbs in various tenses.<br />
+			
+			It can conjugate verbs in the following tenses:
+			
+			<ul>
+				<li>Present</li>
+				<li>Preterite</li>
+			</ul>
+			
+			More tenses to come in March of 2020!<br/><br />
+			
+			All of this runs in your browser; no APIs (if you know what those are) and no ads!<br />
+			
+			There's just lots and lots of JavaScript code to follow the rules of conjugation (with all the irregular forms as well).
+			
+			</p>
+			
+		</div>
+	
+		<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script type = "text/javascript" src = "functions.js"></script>
 		<script type = "text/javascript" src = "main.js"></script>
 	</body>

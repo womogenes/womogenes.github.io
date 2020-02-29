@@ -143,9 +143,9 @@ div#readoutDiv {
 }
 
 #column1 {
-   float: left;
+	float: left;
 	width: 275px;
-   margin-right: 15px;
+	margin-right: 15px;
 }
 
 #column2 {
