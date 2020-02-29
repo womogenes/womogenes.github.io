@@ -10,16 +10,14 @@
 	<body>
 	
 		<div id = "consoleDiv">
-			<b>Log</b><br />
-			<hr>
 			<div id = "readoutDiv" class = "scroll">
 			</div>
-			
 			<br />
 		</div>
 		
 		<div id = "fundsDiv">
-		
+			
+			Happiness: <span id = "happinessMeter">$</span>
 			<h2>Money: $<span id = "funds">0.00</span></h2>
 			
 		</div>
@@ -50,9 +48,9 @@
 				<hr>
 				Unsold Inventory: <span id = "unsoldCranes">0</span><br />
 				
-				Price per Crane: $<span id = "cranePrice">0.25</span><br />
 				<button class = "button" id = "btnLowerPrice" onclick = "lowerPrice()">Lower</button>
 				<button class = "button" id = "btnRaisePrice" onclick = "raisePrice()">Raise</button>
+				Crane price: $<span id = "cranePrice">0.25</span>
 				<br />
 				
 				Public Demand: <span id = "demand">10</span>%<br />
@@ -137,7 +135,8 @@
 			<br />
 		</div>
 		
-		<div id = "restartDiv">
+		<div id = "menuDiv">
+			<button class = "button" id = "btnSave" onclick = "save()">Save</button>
 			<button class = "button" id = "btnRestart" onclick = "restart()">Restart</button>
 		</div>
 		

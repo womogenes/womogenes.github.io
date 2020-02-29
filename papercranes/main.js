@@ -34,6 +34,7 @@ var tick = 0;
 var prevTimer = Date.now();
 
 // DOM Elements.
+var hapinessMeterEl;
 var paperEl;
 var cranesEl;
 var btnMakeCraneEl;
@@ -177,6 +178,7 @@ function load() {
 // localStorage.clear();
 
 function cacheDOMElements() {
+	happinessMeterEl = document.getElementById("happinessMeter");
 	paperEl = document.getElementById("paper");
 	cranesEl = document.getElementById("cranes");
 	btnMakeCraneEl = document.getElementById("btnMakeCrane");
@@ -246,7 +248,7 @@ window.setInterval(function() {
 	}
 	
 	// Make cranes before selling them.
-	makeCrane(highSchoolers * highSchoolerBoost / 100);
+	makeCrane(highSchoolers * highSchoolerBoost / 200);
 	makeCrane(jos);
 
 	// Sell cranes.
@@ -282,6 +284,7 @@ window.setInterval(function() {
 		blink(column0DivEl);
 	}
 	
+	happinessMeterEl.innerHTML = "$".repeat(Math.floor(Math.log10(funds)));
 	cranesEl.innerHTML = commify(Math.round(cranes));
 	cranePriceEl.innerHTML = monify(cranePrice);
 	unsoldCranesEl.innerHTML = commify(Math.floor(unsoldCranes));
