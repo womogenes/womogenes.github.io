@@ -11,6 +11,14 @@ h2 {
 	margin-bottom: 15px;
 }
 
+a {
+	color: #00f;
+}
+
+li {
+	margin-bottom: 5px;
+}
+
 button {
 	margin-top: 15px;
 }
