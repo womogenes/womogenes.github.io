@@ -39,6 +39,7 @@ div.scroll {
 .button:hover {
 	background: #f9f9f9;
     border: 1px solid #222;
+	cursor: pointer;
 }
 
 .button:active {
@@ -49,6 +50,7 @@ div.scroll {
 .button:disabled {
     opacity: 0.6;
     border: 1px solid #555;
+	cursor: auto;
 }
 
 .projectButton {
@@ -67,6 +69,7 @@ div.scroll {
 .projectButton:hover {
     background: #f9f9f9;
 	border: 1px solid #222;
+	cursor: pointer;
 }
 
 .projectButton:active {

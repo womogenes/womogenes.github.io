@@ -56,6 +56,7 @@ table.input, tr.input, th.input {
 .button:hover {
 	background: #f9f9f9;
     border: 1px solid #222;
+	cursor: pointer;
 }
 
 .button:active {
@@ -70,6 +71,7 @@ table.input, tr.input, th.input {
 	padding: 0px;
 	background: #fff;
 	outline: none;
+	cursor: pointer;
 }
 
 input {
