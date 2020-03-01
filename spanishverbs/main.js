@@ -4,6 +4,8 @@
 // DOM element caches!
 var verbInputEl;
 var tenseInputEl;
+var aboutInfoDivEl;
+var creditsInfoDivEl;
 
 var yoEl;
 var túEl;
@@ -16,6 +18,8 @@ function cacheDOMElements() {
 	
 	verbInputEl = document.getElementById("verbInput");
 	tenseInputEl = document.getElementById("tenseInput");
+	aboutInfoDivEl = document.getElementById("aboutInfoDiv");
+	creditsInfoDivEl = document.getElementById("creditsInfoDiv");
 	
 	yoEl = document.getElementById("yo");
 	túEl = document.getElementById("tú");
@@ -34,6 +38,14 @@ $(document).keypress(function(e) {
 		conjugateVerb();
 	}
 });
+
+function collapseAboutInfo() {
+	aboutInfoDivEl.hidden = !aboutInfoDivEl.hidden;
+}
+
+function collapseCreditsInfo() {
+	creditsInfoDivEl.hidden = !creditsInfoDivEl.hidden;
+}
 
 function conjugateVerb() {
 	

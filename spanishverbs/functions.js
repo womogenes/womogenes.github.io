@@ -187,6 +187,7 @@ var conj = function(verb, sub, tense) {
 	verb = verb.toLowerCase();
 	tense = tense.toLowerCase();
 	
+	// Present!
 	if (tense == "present") {
 		var ar = ["o", "as", "a", "amos", "áis", "an"];
         var er = ["o", "es", "e", "emos", "éis", "en"];
@@ -240,6 +241,8 @@ var conj = function(verb, sub, tense) {
 			return word;
 		}
 	}
+	
+	// Preterite!
 	if (tense == "preterite") {
 		var ar = ["é", "aste", "ó", "amos", "asteis", "aron"];
         var er = ["í", "iste", "ió", "imos", "isteis", "ieron"];
@@ -345,15 +348,54 @@ var conj = function(verb, sub, tense) {
 		}
 		return word;
 	}
+	
+	// Furture and conditional!
+	if (tense == "future" || tense == "conditional") {
+		
+		var fut = ["é", "ás", "á", "emos", "éis", "án"];
+		var cond = ["ía", "ías", "ía", "íamos", "íais", "ían"];
+		
+		var stem = ""
+		
+		if (any(verb) != false) { stem = any(verb); }
+		if (verb.includes("caber")) { verb = stem + "cabr"; }
+		if (verb.includes("poner")) { verb = stem + "pondr"; }
+		if (verb.includes("tener")) { verb = stem + "tendr"; }
+		if (verb.includes("decir")) { verb = stem + "dir"; }
+		if (verb.includes("venir")) { verb = stem + "vendr"; }
+		if (verb.includes("querer")) { verb = stem + "querr"; }
+		if (verb.includes("poder")) { verb = stem + "podr"; }
+		if (verb.includes("haber")) { verb = stem + "habr"; }
+		if (verb.includes("salir")) { verb = stem + "saldr"; }
+		if (verb.includes("hacer")) { verb = stem + "har"; }
+		if (verb.includes("valer")) { verb = stem + "valdr"; }
+		if (verb.includes("saber")) { verb = stem + "sabr"; }
+		
+		if (tense == "conditional") { return verb + cond[sub]; }
+		if (tense == "future") { return verb + fut[sub]; }	
+	}
+	
+	// Imperfect!
 	if (tense == "imperfect") {
-		var ar = ["aba","abas","aba","ábamos","abais","aban"]
-        var eir = ["ía","ías","ía","íamos","íais","ían"]
-        var irreg = ["ser","ir","ver"]
-        var ser = ["era","eras","era","éramos","erais","eran"]
-        var ir = ["iba","ibas","iba","íbamos","ibais","iban"]
-        var ver = ["veía","veías","veía","veíamos","veíais","veían"]
+		var ar = ["aba","abas","aba","ábamos","abais","aban"];
+        var eir = ["ía","ías","ía","íamos","íais","ían"];
+        var ser = ["era","eras","era","éramos","erais","eran"];
+        var ir = ["iba","ibas","iba","íbamos","ibais","iban"];
+        var ver = ["veía","veías","veía","veíamos","veíais","veían"];
 		
+		var word;
 		
+		if (verb == "ser") { return ser[sub]; }
+		if (verb == "ir") { return ir[sub]; }
+		if (verb == "ver") { return ver[sub]; }
+		
+		if (verb.endsWith("ar")) {
+			word = verb.substring(0, verb.length - 2) + ar[sub];
+		}
+		if (verb.substring(verb.length - 2, verb.length).match(/[ei]r/)) {
+			word = verb.substring(0, verb.length - 2) + eir[sub];
+		}
+		return word;
 	}
 }
 

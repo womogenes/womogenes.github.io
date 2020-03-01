@@ -71,30 +71,46 @@
 		<br />
 	
 		<div id = "aboutDiv">
-			<h2>About</h2>
-			<hr>
+			<button class = "showButton" onclick = "collapseAboutInfo()">About</button><br />
 			
-			<p>
-			This is a tool that conjugates Spanish verbs in various tenses.<br />
-			
-			It can conjugate verbs in the following tenses:
-			
-			<ul>
-				<li>Present</li>
-				<li>Preterite</li>
-			</ul>
-			
-			More tenses to come in March of 2020!<br/><br />
-			
-			All of this runs in your browser; no APIs (if you know what those are) and no ads!<br />
-			
-			There's just lots and lots of JavaScript code to follow the rules of conjugation (with all the irregular forms as well).
-			
-			</p>
+			<div id = "aboutInfoDiv" hidden>
+				<p>
+				This is a tool that conjugates Spanish verbs in various tenses.<br />
+				
+				It can conjugate verbs in the following tenses:
+				
+				<ul>
+					<li>Present</li>
+					<li>Preterite</li>
+				</ul>
+				
+				More tenses to come in March of 2020!<br/><br />
+				
+				All of this runs in your browser; no APIs (if you know what those are) and no ads!<br />
+				
+				There's just lots and lots of JavaScript code to follow the rules of conjugation (with all the irregular forms as well).
+				</p>
+			</div>
 			
 		</div>
-	
+		<br />
+		
+		<div id = "creditsDiv">
+			<button class = "showButton" onclick = "collapseCreditsInfo()">Credits</button><br />
+		
+			<div id = "creditsInfoDiv" hidden>
+				<p>
+				This code is a JavaScript implementation of cliffpanos' <a href = https://github.com/cliffpanos/Spanish-Verb-Conjugator>Python Conjugator</a> with some improvements.<br /><br />
+				
+				This code is public domain. Do whatever you want! License for this code is <a href = "./license.txt">here</a>.
+				</p>
+			</div>
+			
+		</div>
+		<br />
+		
 		<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src = "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 		<script type = "text/javascript" src = "functions.js"></script>
 		<script type = "text/javascript" src = "main.js"></script>
 	</body>
