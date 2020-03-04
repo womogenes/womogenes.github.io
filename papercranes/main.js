@@ -3,7 +3,7 @@
 var cranes = 0;
 var unsoldCranes = 0;
 var funds = 0;
-var cranePrice = 0.25;
+var cranePrice = 0.;
 var marketingPrice = 40.00;
 var paperPrice = 20;
 var paperAmount = 1000;
@@ -284,7 +284,7 @@ window.setInterval(function() {
 		blink(column0DivEl);
 	}
 	
-	happinessMeterEl.innerHTML = "$".repeat(Math.floor(Math.log10(funds)));
+	happinessMeterEl.innerHTML = "$".repeat(Math.floor(Math.log10(funds)) + 1);
 	cranesEl.innerHTML = commify(Math.round(cranes));
 	cranePriceEl.innerHTML = monify(cranePrice);
 	unsoldCranesEl.innerHTML = commify(Math.floor(unsoldCranes));
