@@ -5,6 +5,7 @@
 
 body, html {
 	padding: 5px;
+	font-size: 105%;
 }
 
 h1, h2 {
@@ -21,10 +22,6 @@ hr {
     background-color: #000;
     color: #000;
     height: 1px;
-}
-
-p {
-	font-size: 13px;
 }
 
 table, th, td {
