@@ -24,6 +24,14 @@ hr {
     height: 1px;
 }
 
+a {
+	color: #00f;
+}
+
+a:hover {
+	color: #09f;
+}
+
 table, th, td {
 	border: 1px solid #000;
 	border-collapse: collapse;
@@ -63,6 +71,7 @@ table.input, tr.input, th.input {
 
 .showButton {
 	text-decoration: underline;
+	font-size: 14px;
 	display: inline-block;
 	border: none;
 	padding: 0px;

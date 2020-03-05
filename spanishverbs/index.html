@@ -1,80 +1,81 @@
 
+<!DOCTYPE html>
 <html>
 
 	<head>
-		<meta charset = "utf-8">
-		<link rel = "stylesheet" type = "text/css" href = "interface.css" media = "screen" />
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="interface.css" media="screen" />
 		<title>Spanish Verb Conjugator</title>
-		<link rel = "icon" href = "spain.ico">	
+		<link rel="icon" href="spain.ico">	
 	</head>
 	
 	<body>
 	
-		<div id = "titleDiv">
+		<div id="titleDiv">
 			<h1>Spanish Verb Conjugator</h2>
 			<hr>
 		</div>
-		<br />
+		<br>
 		
-		<div id = "conjDiv">
+		<div id="conjDiv">
 		
-			<table class = "input">
-				<tr class = "input">
-					<th class = "input">Verb</th>
-					<th class = "input"><input type = "text" id = "verbInput" spellcheck="false" /><br /></th>
+			<table class="input">
+				<tr class="input">
+					<th class="input">Verb</th>
+					<th class="input"><input type="text" id="verbInput" spellcheck="false" /><br></th>
 				</tr>
 				
-				<tr class = "input">
-					<th class = "input">Tense</th>
-					<th class = "input"><input type = "text" id = "tenseInput" spellcheck="false" /></th>
+				<tr class="input">
+					<th class="input">Tense</th>
+					<th class="input"><input type="text" id="tenseInput" spellcheck="false" /></th>
 				</tr>
 			
 			</table>
-			<br />
+			<br>
 			
-			<button class = "button" onclick = "conjugateVerb()">Conjugate</button><br /><br />
+			<button class="button" onclick="conjugateVerb()">Conjugate</button><br><br>
 			
-			<table id = "results">
+			<table id="results">
 				<tr>
 					<th>Subject</th>
 					<th>Conjugation</th>
 				</tr>
 				<tr>
 					<td>yo</td>
-					<td id = "yo"></td>
+					<td id="yo"></td>
 				</tr>
 				<tr>
 					<td>tú</td>
-					<td id = "tú"></td>
+					<td id="tú"></td>
 				</tr>
 				<tr>
 					<td>él/ella/usted</td>
-					<td id = "usted"></td>
+					<td id="usted"></td>
 				</tr>
 				<tr>
 					<td>nosotros/as</td>
-					<td id = "nos"></td>
+					<td id="nos"></td>
 				</tr>
 				<tr>
 					<td>vosotros/as</td>
-					<td id = "vos"></td>
+					<td id="vos"></td>
 				</tr>
 				<tr>
 					<td>ellos/ellas/ustedes</td>
-					<td id = "ustedes"></td>
+					<td id="ustedes"></td>
 				</tr>
 			</table>
-			<br />
+			<br>
 	
 		</div>
-		<br />
+		<br>
 	
-		<div id = "aboutDiv">
-			<button class = "showButton" onclick = "collapseAboutInfo()">About</button><br />
+		<div id="aboutDiv">
+			<button class="showButton" onclick="collapseAboutInfo()">About</button><br>
 			
-			<div id = "aboutInfoDiv" hidden>
+			<div id="aboutInfoDiv" hidden>
 				<p>
-				This is a tool that conjugates Spanish verbs in various tenses.<br />
+				This is a tool that conjugates Spanish verbs in various tenses.<br>
 				
 				It can conjugate verbs in the following tenses:
 				
@@ -85,35 +86,35 @@
 					<li>Imperfect</li>
 				</ul>
 				
-				More tenses to come in March of 2020!<br/><br />
+				More tenses to come in March of 2020!<br/><br>
 				
-				All of this runs in your browser; no APIs (if you know what those are) and no ads!<br />
+				All of this runs in your browser; no APIs (if you know what those are) and no ads!<br>
 				
 				There's just lots and lots of JavaScript code to follow the rules of conjugation (with all the irregular forms as well).
 				</p>
 			</div>
 			
 		</div>
-		<br />
+		<br>
 		
-		<div id = "creditsDiv">
-			<button class = "showButton" onclick = "collapseCreditsInfo()">Credits</button><br />
+		<div id="creditsDiv">
+			<button class="showButton" onclick="collapseCreditsInfo()">Credits</button><br>
 		
-			<div id = "creditsInfoDiv" hidden>
+			<div id="creditsInfoDiv" hidden>
 				<p>
-				This code is a JavaScript implementation of cliffpanos' <a href = https://github.com/cliffpanos/Spanish-Verb-Conjugator>Python Conjugator</a> with some improvements.<br /><br />
+				This code is a JavaScript implementation of cliffpanos' <a href=https://github.com/cliffpanos/Spanish-Verb-Conjugator>Python Conjugator</a> with some improvements.<br><br>
 				
-				This code is public domain. Do whatever you want! License for this code is <a href = "./license.txt">here</a>.
+				This code is public domain. Do whatever you want! License for this code is <a href="./license.txt">here</a>.
 				</p>
 			</div>
 			
 		</div>
-		<br />
+		<br>
 		
-		<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		<script src = "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-		<script type = "text/javascript" src = "functions.js"></script>
-		<script type = "text/javascript" src = "main.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="functions.js"></script>
+		<script type="text/javascript" src="main.js"></script>
 	</body>
 
 </html>
