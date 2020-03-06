@@ -132,6 +132,7 @@ div#consoleMsg {
 
 div#readoutDiv {
 	margin-top: 10px;
+	font-size: 90%;
 	padding: 5px;
 	height: 100%;
 }
@@ -170,3 +171,35 @@ div#readoutDiv {
 	margin-top: 5px;
 	margin-right: 8px;
 }
+
+#happinessLabel {
+	float: left;
+}
+
+#happinessDiv {
+	width: 100px;
+	height: 15px;
+	background-color: #fff;
+	border: 1px solid #000;
+	margin-left: 10%;
+}
+
+#happinessMeter {
+	height: 100%;
+	background-color: #ccc;
+	padding: 0 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

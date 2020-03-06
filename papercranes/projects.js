@@ -214,6 +214,27 @@ var project9 = {
 
 projects.push(project9);
 
+var project10 = {
+	id: "projectButton10",
+	title: "Lower Wages ",
+	priceTag: "($10,000,000)",
+	description: "Lobby the lawmakers to reduce minimum wage.",
+	trigger: function() {return highSchoolers > 250;},
+	uses: 1,
+	cost: function() {return funds >= 10000000;},
+	flag: 0,
+	element: null,
+	effect: function() {
+		project10.flag = 1;
+		minWage = 0;
+		project10.element.parentNode.removeChild(project10.element);
+		var index = activeProjects.indexOf(project10);
+		activeProjects.splice(index, 1);
+	}
+}
+
+projects.push(project10);
+
 
 
 

@@ -52,10 +52,12 @@ table.input, tr.input, th.input {
 
 .button {
 	border: 1px solid #222;
+	font-size: 100%;
 	outline: none;
 	background: #eee;
 	border-radius: 5px;
 	margin-bottom: 5px;
+	height: 20px;
 }
 
 .button:hover {
@@ -70,9 +72,9 @@ table.input, tr.input, th.input {
 }
 
 .showButton {
-	text-decoration: underline;
-	font-size: 14px;
 	display: inline-block;
+	text-decoration: underline;
+	font-size: 105%;
 	border: none;
 	padding: 0px;
 	background: #fff;
@@ -81,7 +83,7 @@ table.input, tr.input, th.input {
 }
 
 input {
-	font-size: 13px;
+	font-size: 105%;
 }
 
 #titleDiv {

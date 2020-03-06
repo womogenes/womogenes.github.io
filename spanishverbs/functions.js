@@ -227,7 +227,7 @@ var conj = function(verb, sub, tense) {
 		if (verb == "ver") { return ver[sub]; }
 		if (verb == "seguir" && sub == 0) { return "sigo"; }
 		
-		if (sub < 3 || sub > 4) { verb = stemChange(verb, sub, tense); }
+		if (sub < 3 || sub > 4) { verb = stemChange(verb, tense); }
 		if (verb.endsWith("ar")) {
 			word = verb.substring(0, verb.length - 2) + ar[sub];
 			return word;

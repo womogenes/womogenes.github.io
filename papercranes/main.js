@@ -2,12 +2,12 @@
 // Yoy! 
 var cranes = 0;
 var unsoldCranes = 0;
-var funds = 0;
+var funds = 20;
 var cranePrice = 0.;
 var marketingPrice = 40.00;
 var paperPrice = 20;
 var paperAmount = 1000;
-var paper = paperAmount;
+var paper = 0;
 var marketingLevel = 1;
 var highSchoolers = 0;
 var minWage = 5;
@@ -248,7 +248,7 @@ window.setInterval(function() {
 	}
 	
 	// Make cranes before selling them.
-	makeCrane(highSchoolers * highSchoolerBoost / 200);
+	makeCrane(highSchoolers * highSchoolerBoost / 500);
 	makeCrane(jos);
 
 	// Sell cranes.
@@ -284,7 +284,8 @@ window.setInterval(function() {
 		blink(column0DivEl);
 	}
 	
-	happinessMeterEl.innerHTML = "$".repeat(Math.floor(Math.log10(funds)) + 1);
+	happinessMeterEl.style.width = Math.log(funds + wishes) + "%";
+	
 	cranesEl.innerHTML = commify(Math.round(cranes));
 	cranePriceEl.innerHTML = monify(cranePrice);
 	unsoldCranesEl.innerHTML = commify(Math.floor(unsoldCranes));
