@@ -74,7 +74,6 @@ table.input, tr.input, th.input {
 .showButton {
 	display: inline-block;
 	text-decoration: underline;
-	font-size: 105%;
 	border: none;
 	padding: 0px;
 	background: #fff;
