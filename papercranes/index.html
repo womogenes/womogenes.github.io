@@ -2,7 +2,9 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
+	<head
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="interface.css" media="screen" />
 		<title>Paper Cranes</title>
 		<link rel="icon" href="crane.ico">	
@@ -44,10 +46,9 @@
 				<br>
 				Wishes: <span id="wishes">0</span><br>
 				
-				<br>
 			</div>
-			
 			<br>
+			
 		</div>
 	
 		<div id="column1">
@@ -68,19 +69,18 @@
 				<button class="button" id="btnMarketing" onclick="increaseMarketing()">Marketing</button>
 				Level: <span id="marketingLevel">1</span><br>
 				Cost: $<span id="marketingPrice">40.00</span><br>
-				<br>
-				
-				<div id="bankDiv" hidden>
-					<b>Bank</b>
-					<hr>
-					Debt: $<span id="debt">0</span><br>
-					Interest Rate: <span id="interestRate">1</span>%<br>
-					<button class="button" id="btnBorrowMoney" onclick="borrowMoney(20)">Borrow</button>
-					<button class="button" id="btnPayBack" onclick="payBack()">Pay Back</button><br>
-					<br>
-				</div>
-				
 			</div>
+			<br>
+			
+			<div id="bankDiv" hidden>
+				<b>Bank</b>
+				<hr>
+				Debt: $<span id="debt">0</span><br>
+				Interest Rate: <span id="interestRate">1</span>%<br>
+				<button class="button" id="btnBorrowMoney" onclick="borrowMoney(20)">Borrow</button>
+				<button class="button" id="btnPayBack" onclick="payBack()">Pay Back</button><br>
+			</div>
+			<br>
 			
 		</div>
 		
@@ -127,11 +127,11 @@
 					<button class="button" id="btnHireJo" onclick="hireJo()">Hire</button>
 					<span id="jos">0</span> Jo Nakashimas<br>
 					Cost: $<span id="joCost">100.00</span>
-					<br>
 				</div>
-				
 				<br>
+				
 			</div>
+			<br>
 		
 		</div>
 		

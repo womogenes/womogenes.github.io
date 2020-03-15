@@ -6,10 +6,10 @@
 
 body {
 	font-size: 13px;
+	min-width: 100px;
 }
 
 h2 {
-	margin-bottom: 15px;
 }
 
 hr {
@@ -33,8 +33,8 @@ div.scroll {
 	outline: none;
 	background: #eee;
 	
-	margin-top: 2px;
-	margin-bottom: 2px;
+	margin-top: 3px;
+	margin-bottom: 3px;
 }
 
 .button:hover {
@@ -145,29 +145,34 @@ div#readoutDiv {
 	float: left;
 	width: 275px;
 	margin-right: 15px;
+	margin-bottom: 10px;
 }
 
 #column1 {
 	float: left;
 	width: 275px;
 	margin-right: 15px;
+	margin-bottom: 10px;
 }
 
 #column2 {
 	float: left;
 	width: 275px;
 	margin-right: 15px;
+	margin-bottom: 10px;
 }
 
 #projectsColumn {
 	float: right;
 	width: 275px;
+	margin-right: 15px;
 }
 
 #menuDiv {
 	position: fixed;
 	top: 0;
 	right: 0;
+	margin-left: 8px;
 	margin-top: 5px;
 	margin-right: 8px;
 }
@@ -177,19 +182,26 @@ div#readoutDiv {
 }
 
 #happinessProgress {
-	width: 200px;
+	width: 275px;
 	height: 15px;
 	background-color: #fff;
 	border: 1px solid #000;
 	margin-top: 5px;
+	padding: 0.2px;
 }
 
 #happinessMeter {
 	height: 100%;
 	background-color: #ccc;
 	padding: 0 5px;
+	border: none;
 }
 
+@media only screen and (max-width: 885px) {
+    #projectsColumn {
+      float: left;
+    }
+}
 
 
 
