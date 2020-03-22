@@ -1,17 +1,21 @@
 ///
-/// Phantom by HTML5 UP
+/// Stellar by HTML5 UP
 /// html5up.net | @ajlkn
 /// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 ///
 
 /* Type */
 
-	body, input, select, textarea {
+	body {
+		background-color: _palette(bg);
 		color: _palette(fg);
+	}
+
+	body, input, select, textarea {
 		font-family: _font(family);
-		font-size: 16pt;
+		font-size: 17pt;
 		font-weight: _font(weight);
-		line-height: 1.75;
+		line-height: 1.65;
 
 		@include breakpoint('<=xlarge') {
 			font-size: 14pt;
@@ -20,25 +24,27 @@
 		@include breakpoint('<=large') {
 			font-size: 12pt;
 		}
+
+		@include breakpoint('<=xxsmall') {
+			font-size: 11pt;
+		}
 	}
 
 	a {
 		@include vendor('transition', (
-			'border-bottom-color #{_duration(transition)} ease',
-			'color #{_duration(transition)} ease'
+			'color #{_duration(transition)} ease',
+			'border-bottom #{_duration(transition)} ease'
 		));
 		text-decoration: none;
-		color: _palette(fg);
-		border-bottom: dotted 1px transparentize(_palette(fg), 0.5);
+		border-bottom: dotted 1px;
+		color: inherit;
 
 		&:hover {
 			border-bottom-color: transparent;
-			color: _palette(accent1) !important;
 		}
 	}
 
 	strong, b {
-		color: _palette(fg-bold);
 		font-weight: _font(weight-bold);
 	}
 
@@ -48,78 +54,60 @@
 
 	p {
 		margin: 0 0 _size(element-margin) 0;
-	}
 
-	h1 {
-		font-size: 2.75em;
-		color: _palette(fg-bold);
-		font-weight: _font(weight-bold-alt);
-		line-height: 1.3;
-		margin: 0 0 (_size(element-margin) * 0.5) 0;
-		letter-spacing: _font(letter-spacing-alt);
-
-		a {
-			color: inherit;
-		}
-
-		@include breakpoint('<=small') {
-			font-size: 2em;
-			margin: 0 0 (_size(element-margin) * 0.5) 0;
-		}
-
-		@include breakpoint('<=xxsmall') {
-			font-size: 1.75em;
+		&.content {
+			-moz-columns: 20em 2;
+			-webkit-columns: 20em 2;
+			-ms-columns: 20em 2;
+			columns: 20em 2;
+			-moz-column-gap: _size(element-margin);
+			-webkit-column-gap: _size(element-margin);
+			-ms-column-gap: _size(element-margin);
+			column-gap: _size(element-margin);
+			text-align: justify;
 		}
 	}
 
-	h2, h3, h4, h5, h6 {
-		color: _palette(fg-bold);
-		font-weight: _font(weight-bold);
+	h1, h2, h3, h4, h5, h6 {
+		font-weight: _font(weight);
 		line-height: 1.5;
-		margin: 0 0 (_size(element-margin) * 1) 0;
-		text-transform: uppercase;
+		margin: 0 0 (_size(element-margin) * 0.35) 0;
 		letter-spacing: _font(letter-spacing);
 
 		a {
 			color: inherit;
+			text-decoration: none;
 		}
+	}
+
+	h1 {
+		font-size: 2.5em;
+		line-height: 1.2;
 	}
 
 	h2 {
-		font-size: 1.1em;
+		font-size: 1.5em;
 	}
 
 	h3 {
-		font-size: 1em;
+		font-size: 1.25em;
 	}
 
 	h4 {
-		font-size: 0.8em;
+		font-size: 1.1em;
 	}
 
 	h5 {
-		font-size: 0.8em;
+		font-size: 0.9em;
 	}
 
 	h6 {
-		font-size: 0.8em;
-	}
-
-	@include breakpoint('<=medium') {
-		h1, h2, h3, h4, h5, h6 {
-			br {
-				display: none;
-			}
-		}
+		font-size: 0.7em;
 	}
 
 	@include breakpoint('<=small') {
-		h2 {
-			font-size: 1em;
-		}
-
-		h3 {
-			font-size: 0.8em;
+		h1 {
+			font-size: 2em;
 		}
 	}
 
@@ -136,16 +124,15 @@
 	}
 
 	blockquote {
-		border-left: solid (_size(border-width) * 4) _palette(border);
+		border-left: solid 4px;
 		font-style: italic;
 		margin: 0 0 _size(element-margin) 0;
 		padding: (_size(element-margin) / 4) 0 (_size(element-margin) / 4) _size(element-margin);
 	}
 
 	code {
-		background: _palette(border-bg);
 		border-radius: _size(border-radius);
-		border: solid _size(border-width) _palette(border);
+		border: solid 1px;
 		font-family: _font(family-fixed);
 		font-size: 0.9em;
 		margin: 0 0.25em;
@@ -168,7 +155,7 @@
 
 	hr {
 		border: 0;
-		border-bottom: solid _size(border-width) _palette(border);
+		border-bottom: solid 1px;
 		margin: _size(element-margin) 0;
 
 		&.major {
@@ -187,3 +174,43 @@
 	.align-right {
 		text-align: right;
 	}
+
+	@mixin color-typography($p: null) {
+		@if $p != null {
+			background-color: _palette($p, bg);
+			color: _palette($p, fg);
+		}
+
+		input, select, textarea {
+			color: _palette($p, fg-bold);
+		}
+
+		a {
+			&:hover {
+				color: _palette($p, fg-bold);
+			}
+		}
+
+		strong, b {
+			color: _palette($p, fg-bold);
+		}
+
+		h1, h2, h3, h4, h5, h6 {
+			color: _palette($p, fg-bold);
+		}
+
+		blockquote {
+			border-left-color: _palette($p, border);
+		}
+
+		code {
+			background: _palette($p, border-bg);
+			border-color: _palette($p, border);
+		}
+
+		hr {
+			border-bottom-color: _palette($p, border);
+		}
+	}
+
+	@include color-typography;
