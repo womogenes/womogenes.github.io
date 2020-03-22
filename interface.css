@@ -1,0 +1,38 @@
+
+* {
+	font-family: "Roboto";
+}
+
+body {
+	margin: 10px;
+	line-height: 150%;
+}
+
+h1 {
+	margin-bottom: 15px;
+	text-align: center;
+}
+
+img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+a {
+	color: #00f;
+}
+
+a:hover {
+	color: #09f;
+}
+
+li {
+	margin-bottom: 5px;
+}
+
+#introDiv {
+	margin: 5% auto;
+	padding: 50px;
+	width: 600px;
+}
