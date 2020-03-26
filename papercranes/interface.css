@@ -1,7 +1,7 @@
 
 
 * {
-	font-family: "Consolas", monospace;
+	font-family: "Inconsolata", "Consolas", monospace;
 }
 
 body {
@@ -79,8 +79,9 @@ div.scroll {
 }
 
 .projectButton:disabled {
-	opacity: 0.6;
+	opacity: 0.4;
 	border: 1px solid #555;
+	cursor: auto;
 }
 
 .pulsate {
