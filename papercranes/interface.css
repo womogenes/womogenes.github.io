@@ -5,7 +5,7 @@
 }
 
 body {
-	font-size: 13px;
+	font-size: 15px;
 	min-width: 100px;
 }
 
@@ -13,11 +13,9 @@ h2 {
 }
 
 hr {
-	margin-top: 2px;
+	margin-top: 4px;
 	margin-bottom: 3px;
-	
-    border: 0;
-	height: 1px;
+    border: thin solid #000;
 	background-color: #000;
 }
 
@@ -29,7 +27,7 @@ div.scroll {
 .button {
 	font-size: 13px;
 	border-radius: 5px;
-    border: 1px solid #222;
+    border: thin solid #222;
 	outline: none;
 	background: #eee;
 	
@@ -186,15 +184,13 @@ div#readoutDiv {
 	width: 275px;
 	height: 15px;
 	background-color: #fff;
-	border: 1px solid #000;
+	border: thin solid #000;
 	margin-top: 5px;
-	padding: 0.2px;
 }
 
 #happinessMeter {
 	height: 100%;
 	background-color: #ccc;
-	padding: 0 5px;
 	border: none;
 }
 
