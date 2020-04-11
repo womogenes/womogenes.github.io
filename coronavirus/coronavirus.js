@@ -37,12 +37,11 @@ function preload() {
     img = loadImage(imgUrl);
     
     dataTable = loadTable("./data/total_cases_rewritten.csv", "csv");
-    deathTable = loadTable("./data/total_deaths.csv", "csv");
 }
 
 function setup() {
     
-    mapScale = 3;
+    mapScale = 2;
     mapWidth = 300 * mapScale;
     mapHeight = 180 * mapScale;
     
@@ -65,13 +64,13 @@ function setup() {
     startDate = new Date(2019, 11, 31);
     
     // GUI?
-    day = 0;
+    day = totalDays - 2;
     dayMin = 0;
     dayMax = totalDays - 2;
     dayStep = 1;
     gui = createGui("Date Slider");
     gui.addGlobals("day");
-    gui.setPosition(20, mapHeight + 40);
+    gui.setPosition(20, mapHeight + 160);
     
     cam = {x: 0, y: 0};
     // cam = {x: width / 2, y: height / 2};
