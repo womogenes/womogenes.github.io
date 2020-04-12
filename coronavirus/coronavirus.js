@@ -31,6 +31,8 @@ var newXs;
 var newYs;
 var clicked;
 
+var theCountry;
+
 function preload() {
     
     var imgUrl = "./data/equirectangular.png";
@@ -70,12 +72,14 @@ function setup() {
     dayStep = 1;
     gui = createGui("Date Slider");
     gui.addGlobals("day");
-    gui.setPosition(20, mapHeight + 160);
+    gui.setPosition(300, mapHeight + 200);
     
     cam = {x: 0, y: 0};
     // cam = {x: width / 2, y: height / 2};
     zoom = 1;
     zooming = false;
+    
+    theCountry = {name: "", cases: ""};
 }
 
 function mouseDragged() {
@@ -125,6 +129,8 @@ function draw() {
     radii = [];
     newXs = [];
     newYs = [];
+    theCountry = {name: "", cases: ""};
+    
     textAlign(CENTER, CENTER);
     for (var i = 2; i < totalCountries + 2; i++) {
         var code = dataTable.getString(0, i);
@@ -157,17 +163,26 @@ function draw() {
             textSize(pow(log(cases), 2) / 5 / zoom);
             text(country[0] + "\n" + nfc(countCases(i, day)), x, y);
             
+            theCountry.name = country[0];
+            theCountry.cases = nfc(countCases(i, day));
+            
         } else {
             rect(x - r / 2, y - r / 2, r, r);
         }
-        
-        // ellipse(x, y, r);
     }
     pop();
     
-    fill(0, 0);
-    for (var j = 0; j < newXs.length; j++) {
-        ellipse(newXs[j], newYs[j], radii[j]);
+    
+    if (theCountry.cases != "0") {
+        console.log(theCountry.cases);
+        
+        fill(255);
+        rect(200, 0, width - 200, 40);
+        fill(0);
+        textAlign(LEFT, TOP);
+        text(theCountry.name, 210, 10);
+        textAlign(RIGHT, TOP);
+        text(theCountry.cases, width - 10, 10);
     }
     
     noFill();
