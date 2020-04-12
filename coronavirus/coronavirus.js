@@ -86,10 +86,12 @@ function mouseDragged() {
 }
 
 function mouseWheel(event) {
-    for (var i = 0; i < 100; i++) {
-        zoom *= (1 - event.delta / 100000);
+    if (0 <= mouseX && mouseX <= mapWidth && 0 <= mouseY && mouseY <= mapHeight) {
+        for (var i = 0; i < 100; i++) {
+            zoom *= (1 - event.delta / 100000);
+        }
+        return false;
     }
-    return false;
 }
 
 function mousePressed() {
