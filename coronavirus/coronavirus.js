@@ -38,7 +38,7 @@ function preload() {
     var imgUrl = "./data/equirectangular.png";
     img = loadImage(imgUrl);
     
-    dataTable = loadTable("./data/total_cases_rewritten.csv", "csv");
+    dataTable = loadTable("./data/total_cases_(2).csv", "csv");
 }
 
 function setup() {
@@ -52,7 +52,7 @@ function setup() {
     var url = "./data/countries.json";
     locJSON = loadJSON(url);
     
-    img.resize(mapWidth, mapHeight);
+    img.resize(mapWidth * 4, mapHeight * 4);
     
     // Data is organized by date.
     data = {};
@@ -114,7 +114,9 @@ function draw() {
     scale(zoom);
     translate(cam.x, cam.y);
     
-    image(img, -tX, -tY);
+    scale(1/4);
+    image(img, -tX * 4, -tY * 4);
+    scale(4);
     
     if (frameCount == 1) {
         fill(0);
@@ -135,46 +137,54 @@ function draw() {
     for (var i = 2; i < totalCountries + 2; i++) {
         var code = dataTable.getString(0, i);
         
-        var cases = countCases(i, day);
-        cases = Math.pow(log(cases), 4) * 4;
-        fill(cases, 0, 0, cases / 700);
+        if (code == "International") { // What even is this?
+            continue;
+        }
         
-        var country = locJSON[code];        
-        var x = -tX + country[1][1] * 300/360 * mapScale - mapScale * 51/6 + mapWidth / 2;
-        var y = -tY + mapScale * 2/3 + -country[1][0] * mapScale + mapHeight / 2;
-        var r = cases / 1000 / zoom;
+        var cases = countCases(i, day);
+        
+        cases = Math.pow(log(cases), 4) * 4;
+        fill(cases, 0, 0, log(cases) * 10);
+        
+        var country = locJSON[code];
+        
+        var x = -tX + country[1] * 300/360 * mapScale - mapScale * 51/6 + mapWidth / 2;
+        var y = -tY + -country[0] * mapScale + mapHeight / 2;
+        var r = sqrt(cases) / 7 / pow(zoom, 0.6); // cases / 1000 / pow(zoom, 0.6);
         
         var newX = (x + cam.x) * zoom + tX;
         var newY = (y + cam.y) * zoom + tY;
         
+        /*
         radii.push(cases / 1000);
         newXs.push(newX);
         newYs.push(newY);
-        
+        */
         
         noStroke();
         strokeWeight(1 / zoom);
-        if (abs(mouseX - newX) < cases / 2000 && abs(mouseY - newY) < cases / 2000) {
-            fill(cases, 0, 0, 32);
-            rect(x - r / 2, y - r / 2, r, r);
+        ellipseMode(CORNER);
+        // if (abs(mouseX - newX) < cases / 2000 && abs(mouseY - newY) < cases / 2000) {
+        if (dist(mouseX, mouseY, newX, newY) < r * zoom / 2 && abs(mouseX - width / 2) < width / 2 && abs(mouseY - height / 2) < height / 2) {
+            
+            fill(cases, cases, 0, 32);
+            ellipse(x - r / 2, y - r / 2, r, r);
             
             fill(0);
             noStroke();
-            textSize(pow(log(cases), 2) / 5 / zoom);
-            text(country[0] + "\n" + nfc(countCases(i, day)), x, y);
+            textSize(min(pow(log(cases), 1) * 2 * pow(zoom, 0.1), 32 / zoom));
+            text(code + "\n" + nfc(countCases(i, day)), x, y);
             
-            theCountry.name = country[0];
+            theCountry.name = code;
             theCountry.cases = nfc(countCases(i, day));
             
         } else {
-            rect(x - r / 2, y - r / 2, r, r);
+            ellipse(x - r / 2, y - r / 2, r, r);
         }
     }
     pop();
     
-    
-    if (theCountry.cases != "0") {
-        console.log(theCountry.cases);
+    if (theCountry.cases != "0" && theCountry.cases != "" && theCountry.name != "International") {
         
         fill(255);
         rect(200, 0, width - 200, 40);

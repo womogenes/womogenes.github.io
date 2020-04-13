@@ -3,7 +3,7 @@
 
 import csv
 
-csvfile = open("total_cases.csv", "r")
+csvfile = open("total_cases_(2).csv", "r")
 reader = csv.reader(csvfile, delimiter = ",", quotechar = "|")
 
 final = []
@@ -31,7 +31,7 @@ for row in reader:
 csvfile.close()
 
 # Now write.
-csvfile = open("total_cases_rewritten.csv", "w", newline = "\n")
+csvfile = open("total_cases_rewritten (1).csv", "w", newline = "\n")
 
 writer = csv.writer(csvfile, delimiter = ",", quotechar = "|", quoting = csv.QUOTE_MINIMAL)
 for r in final:
