@@ -150,8 +150,7 @@ function draw() {
         
         var x = -tX + country[1] * 300/360 * mapScale - mapScale * 51/6 + mapWidth / 2;
         var y = -tY + -country[0] * mapScale + mapHeight / 2;
-        var r = sqrt(cases) / 7 / pow(zoom, 0.6); // cases / 1000 / pow(zoom, 0.6);
-        
+        var r = cases / 1500 / pow(zoom, 0.6); // cases / 1000 / pow(zoom, 0.6);       
         var newX = (x + cam.x) * zoom + tX;
         var newY = (y + cam.y) * zoom + tY;
         
